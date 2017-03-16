@@ -4,11 +4,11 @@
                      http://maven.apache.org/maven-v4_0_0.xsd">
  
     <modelVersion>4.0.0</modelVersion>
-    <groupId>org.o7planning</groupId>
-    <artifactId>SpringMVCAnnotationShoppingCart</artifactId>
+    <groupId>com.mds</groupId>
+    <artifactId>SpringShop</artifactId>
     <packaging>war</packaging>
     <version>1.0.0</version>
-    <name>SpringMVCAnnotationShoppingCart Maven Webapp</name>
+    <name>SpringShop Webapp</name>
     <url>http://maven.apache.org</url>
  
  

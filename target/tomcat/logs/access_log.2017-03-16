@@ -1,8 +1,7 @@
-0:0:0:0:0:0:0:1 - - [16/Mar/2017:18:17:49 +0200] "GET / HTTP/1.1" 404 - http-bio-8080-exec-1 0
-0:0:0:0:0:0:0:1 - - [16/Mar/2017:18:17:52 +0200] "GET / HTTP/1.1" 404 - http-bio-8080-exec-4 0
-0:0:0:0:0:0:0:1 - - [16/Mar/2017:18:17:55 +0200] "GET /SpringMVCAnnotationShoppingCart HTTP/1.1" 302 - http-bio-8080-exec-5 0
-0:0:0:0:0:0:0:1 - - [16/Mar/2017:18:17:56 +0200] "GET /SpringMVCAnnotationShoppingCart/ HTTP/1.1" 200 1226 http-bio-8080-exec-6 1145
-0:0:0:0:0:0:0:1 - - [16/Mar/2017:18:17:56 +0200] "GET /SpringMVCAnnotationShoppingCart/styles.css HTTP/1.1" 200 2286 http-bio-8080-exec-7 12
-0:0:0:0:0:0:0:1 - - [16/Mar/2017:18:18:00 +0200] "GET /SpringMVCAnnotationShoppingCart/login HTTP/1.1" 404 1061 http-bio-8080-exec-8 644
-0:0:0:0:0:0:0:1 - - [16/Mar/2017:18:18:02 +0200] "GET /SpringMVCAnnotationShoppingCart/ HTTP/1.1" 200 1226 http-bio-8080-exec-9 360
-0:0:0:0:0:0:0:1 - - [16/Mar/2017:18:18:02 +0200] "GET /SpringMVCAnnotationShoppingCart/styles.css HTTP/1.1" 200 2286 http-bio-8080-exec-10 5
+0:0:0:0:0:0:0:1 - - [16/Mar/2017:21:17:29 +0200] "GET /SpringMVCAnnotationShoppingCart/ HTTP/1.1" 404 - http-bio-8080-exec-1 0
+0:0:0:0:0:0:0:1 - - [16/Mar/2017:21:17:36 +0200] "GET /SpringShop HTTP/1.1" 404 - http-bio-8080-exec-4 0
+0:0:0:0:0:0:0:1 - - [16/Mar/2017:21:18:50 +0200] "GET /SpringShop HTTP/1.1" 404 - http-bio-8080-exec-1 0
+0:0:0:0:0:0:0:1 - - [16/Mar/2017:21:21:47 +0200] "GET /SpringMVCAnnotationShoppingCart HTTP/1.1" 404 - http-bio-8080-exec-3 0
+0:0:0:0:0:0:0:1 - - [16/Mar/2017:21:22:14 +0200] "GET /SpringMVCAnnotationShoppingCart HTTP/1.1" 404 - http-bio-8080-exec-4 0
+0:0:0:0:0:0:0:1 - - [16/Mar/2017:21:45:47 +0200] "GET /SpringMVCAnnotationShoppingCart HTTP/1.1" 404 - http-bio-8080-exec-6 0
+0:0:0:0:0:0:0:1 - - [16/Mar/2017:21:45:53 +0200] "GET /SpringShop HTTP/1.1" 404 - http-bio-8080-exec-7 0
