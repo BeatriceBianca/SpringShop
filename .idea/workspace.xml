@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6a4558c5-0681-4947-be77-803cbdda8509" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/m2e-wtp/web-resources/META-INF/maven/org.o7planning/SpringMVCAnnotationShoppingCart/pom.properties" afterPath="$PROJECT_DIR$/target/m2e-wtp/web-resources/META-INF/maven/org.o7planning/SpringMVCAnnotationShoppingCart/pom.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/m2e-wtp/web-resources/META-INF/maven/com.mds/SpringShop/pom.properties" afterPath="$PROJECT_DIR$/target/m2e-wtp/web-resources/META-INF/maven/com.mds/SpringShop/pom.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/tomcat/logs/access_log.2017-03-14" afterPath="$PROJECT_DIR$/target/tomcat/logs/access_log.2017-03-14" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/tomcat/work/Tomcat/localhost/SpringMVCAnnotationShoppingCart/org/apache/jsp/WEB_002dINF/pages/_005ffooter_jsp.java" afterPath="$PROJECT_DIR$/target/tomcat/work/Tomcat/localhost/SpringMVCAnnotationShoppingCart/org/apache/jsp/WEB_002dINF/pages/_005ffooter_jsp.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/tomcat/work/Tomcat/localhost/SpringMVCAnnotationShoppingCart/org/apache/jsp/WEB_002dINF/pages/_005fheader_jsp.java" afterPath="$PROJECT_DIR$/target/tomcat/work/Tomcat/localhost/SpringMVCAnnotationShoppingCart/org/apache/jsp/WEB_002dINF/pages/_005fheader_jsp.java" />
