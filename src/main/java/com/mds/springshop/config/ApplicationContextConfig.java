@@ -20,7 +20,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
  
 @Configuration
-@ComponentScan("org.o7planning.springshop.*")
+@ComponentScan("com.mds.springshop.*")
 @EnableTransactionManagement
 // Load to Environment.
 @PropertySource("classpath:ds-hibernate-cfg.properties")
@@ -87,7 +87,7 @@ public class ApplicationContextConfig {
         LocalSessionFactoryBean factoryBean = new LocalSessionFactoryBean();
          
         // Package contain entity classes
-        factoryBean.setPackagesToScan(new String[] { "org.o7planning.springshop.entity" });
+        factoryBean.setPackagesToScan(new String[] { "com.mds.springshop.entity" });
         factoryBean.setDataSource(dataSource);
         factoryBean.setHibernateProperties(properties);
         factoryBean.afterPropertiesSet();
