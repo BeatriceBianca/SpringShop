@@ -1,0 +1,89 @@
+html {
+	width: 100%;
+}
+
+body {
+	width: 70%;
+	height: 700px;
+	display: block;
+	margin: 50px auto auto auto;
+	border: 2px solid black;
+}
+
+#logo {
+    height: 70px;
+    display: inline-block;
+    padding: 20px;
+    float: left;
+}
+
+.navbar {
+    height: 100px;
+    width: 100%;
+    background-color: #C6E7CE;
+}
+
+.navbar-list {
+    padding-left: 50%;
+    margin-top: 30px;
+}
+
+.navbar-item1 {
+    display: table-cell;
+    vertical-align: bottom;
+    text-align: center;
+    padding-left: 70px;
+}
+
+.navbar-item {
+    display: table-cell;
+    vertical-align: bottom;
+    text-align: center;
+    padding-top: 10px;
+}
+
+.navbar-item a, .navbar-item1 a {
+	text-decoration: none;
+	padding-right: 50px;
+	font-size: 19px;
+	color: black;
+}
+
+.container-12 {
+    margin-left: auto;
+    margin-right: auto;
+    width:  100%;
+    float: right;
+}
+
+#top-div {
+	width: 70%;
+	display: inline-block;
+	float: right;
+	margin: auto 50px auto auto;
+	border: 2px solid black;
+	background-color: #009A31;
+}
+
+.item {
+    display: table-cell;
+    vertical-align: bottom;
+    text-align: center;
+    padding: 10px 10px 10px 30px
+}
+
+.item a {
+	text-decoration: none;
+	padding-right: 80px;
+	font-size: 19px;
+	color: white;
+}
+
+#left-div {
+	width: 20%;
+	border: 2px solid black;
+	margin-top: 10%;
+	margin-left: 3%;
+	padding: 10px;
+	font-size: 17px;
+}
