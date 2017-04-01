@@ -1,12 +1,7 @@
 package com.mds.springshop.config;
  
 import java.util.Properties;
- 
-
-
 import javax.sql.DataSource;
- 
-
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
