@@ -7,16 +7,16 @@
         <img src="images/logo.png" id="logo"/>
 
         <div class="navbar-list">
-        	<c:if test="${1 == 0}">
+        	<c:if test="${0 == 0}">
 	            <div class="navbar-item1">
-	                <a href="creare-cont" id="creare-cont"> Creare cont </a>
+	                <a href="${pageContext.request.contextPath}/newAccount" id="creare-cont"> Creare cont </a>
 	            </div>
 	            <div class="navbar-item1">
-	                <a href="login" id="login"> Login </a>
+	                <a href="login.jsp" id="login"> Login </a>
 	            </div>
         	</c:if>
         	
-        	<c:if test="${0 == 0}">
+        	<c:if test="${1 == 0}">
 	            <div class="navbar-item">
 	                <a href="profil" id="creare-cont"> Profil </a>
 	            </div>

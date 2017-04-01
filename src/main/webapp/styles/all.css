@@ -87,3 +87,8 @@ body {
 	padding: 10px;
 	font-size: 17px;
 }
+
+#criterii {
+	display: block;
+	margin: auto;
+}
