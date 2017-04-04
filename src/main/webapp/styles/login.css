@@ -1,0 +1,30 @@
+#login-container {
+	margin-left: 20%;
+	margin-top: 10.5%;
+	margin-right: 20%;
+	padding-left: 5%;
+	padding-bottom: 5%;
+}
+
+#login-button {
+	border-radius: 4px;
+	width: 30%;
+	height: 25px;
+	display: block;
+	margin: auto;
+}
+
+h1 {
+	margin-left: 25%;
+}
+
+#login-container input {
+	width: 40%;
+	border-radius: 4px;
+}
+
+select {
+	border-radius: 4px;
+	width: 40%;
+	height: 25px;
+}

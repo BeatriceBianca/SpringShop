@@ -1,6 +1,6 @@
 <form id="left-div"> 
 	<div> Categorie: </div> 
-		<select name="categorie">
+		<select name="categorie" id = "categorie">
 			<option>[Orice]</option>
 	   	    <option value="it">IT</option>
 			<option value="electrocasnice">Electrocasnice</option>
@@ -11,9 +11,12 @@
 	<br><br>
 		
 	<div> Pret </div>
-		<input id="pret" type="range" min="50" max="500" step="10" onchange="afiseazaPret(this.value)"/>
-		<span id="valoare"> </span>
-	<br><br>
+		<div id = "pret">
+			<input id="pret-min" type="text"/>
+			<span> - </span>
+			<input id="pret-max" type="text"/>
+		</div>
+	<br>
 		
 	<div> Disponibilitate </div>
 		<input type="radio" name="disp" value="all" checked> Toate<br>
