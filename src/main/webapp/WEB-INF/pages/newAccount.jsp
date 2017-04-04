@@ -16,7 +16,53 @@
 	
 	<jsp:include page="menu.jsp" />
 	
-	<jsp:include page="criterii.jsp" />
-	
+	<div id = "creare-cont-container">
+			<h1>Creare cont</h1>
+			<div>
+				<div>
+					<div>Nume: </div>
+					<input type = "text"/>
+					<br>
+					
+					<div>Prenume: </div>
+					<input type = "text"/>
+					<br>
+					
+					<div>Email: </div>
+					<div>
+						<input type = "text"/>
+						<span>@</span>
+						<select name = "mail">
+							<option value = "default">[Alege]</option>
+							<option value = "yahoo">yahoo.com</option>
+							<option value = "gmail">gmail.com</option>
+						</select>
+					</div>
+						
+					<div>Parola: </div>
+					<input type = "text"/>
+					<br>
+				</div>
+			
+			<div>
+				<div>Telefon: </div>
+				<input type = "text"/>
+				<br>
+				
+				<div>Adresa: </div>
+				<input type = "text"/>
+				<br>
+				
+				<div>Tip cont: </div>
+				<select>
+					<option>Cumparator</option>
+					<option>Furnizor</option>
+				</select>
+			
+			</div>
+		</div>
+		<br>
+		<button id = "creare-cont-button">Creare cont</button>
+	</div>
 </body>
 </html>

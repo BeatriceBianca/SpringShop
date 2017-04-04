@@ -1,5 +1,8 @@
 html {
 	width: 100%;
+	background: url(http://bizbeatblog.dallasnewsblogs.com/files/2013/04/Samsung-Experience-Shop.jpg);
+	background-repeat: no-repeat;
+	font-family: 'Oswald', sans-serif;
 }
 
 body {
@@ -8,6 +11,7 @@ body {
 	display: block;
 	margin: 50px auto auto auto;
 	border: 2px solid black;
+	background: linear-gradient(to bottom right, #ADD8E6, #4682B4);
 }
 
 #logo {
@@ -20,7 +24,7 @@ body {
 .navbar {
     height: 100px;
     width: 100%;
-    background-color: #C6E7CE;
+    background-color: #4682B4;
 }
 
 .navbar-list {
@@ -62,7 +66,7 @@ body {
 	float: right;
 	margin: auto 50px auto auto;
 	border: 2px solid black;
-	background-color: #009A31;
+	background-color: #000080;
 }
 
 .item {
@@ -86,9 +90,28 @@ body {
 	margin-left: 3%;
 	padding: 10px;
 	font-size: 17px;
+	background-color: #B0C4DE;
+	float: left;
 }
 
 #criterii {
 	display: block;
 	margin: auto;
+	width: 30%;
+	height: 25px;
+}
+
+#pret {
+	width: 100%;
+}
+
+#pret-min, #pret-max {
+	width: 30%;
+	border-radius: 4px;
+}
+
+#categorie {
+	border-radius: 4px;
+	width: 50%;
+	height: 25px;
 }

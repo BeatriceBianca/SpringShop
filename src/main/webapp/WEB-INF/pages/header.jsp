@@ -7,30 +7,30 @@
         <img src="images/logo.png" id="logo"/>
 
         <div class="navbar-list">
-        	<c:if test="${0 == 0}">
+        	<c:if test="${1 == 0}">
 	            <div class="navbar-item1">
 	                <a href="${pageContext.request.contextPath}/newAccount" id="creare-cont"> Creare cont </a>
 	            </div>
 	            <div class="navbar-item1">
-	                <a href="login.jsp" id="login"> Login </a>
+	                <a href="${pageContext.request.contextPath}/login" id="login"> Login </a>
 	            </div>
         	</c:if>
         	
-        	<c:if test="${1 == 0}">
+        	<c:if test="${0 == 0}">
 	            <div class="navbar-item">
-	                <a href="profil" id="creare-cont"> Profil </a>
+	                <a href="${pageContext.request.contextPath}/profil" id="profil"> Profil </a>
 	            </div>
 	            <div class="navbar-item">
-	                <a href="cos-curent" id="login"> Cos curent </a>
+	                <a href="${pageContext.request.contextPath}/cosCurent" id="cos-curent"> Cos curent </a>
 	            </div>
 	            <div class="navbar-item">
-	                <a href="istoric" id="login"> Istoric comenzi </a>
+	                <a href="${pageContext.request.contextPath}/istoric" id="istoric"> Istoric comenzi </a>
 	            </div>
 	            <div class="navbar-item">
-	                <a href="favorite" id="login"> Favorite </a>
+	                <a href="${pageContext.request.contextPath}/favorite" id="favorite"> Favorite </a>
 	            </div>
 	            <div class="navbar-item">
-	                <a href="logout" id="login"> Logout </a>
+	                <a href="${pageContext.request.contextPath}/logout" id="logout"> Logout </a>
 	            </div>
         	</c:if>
         </div>
