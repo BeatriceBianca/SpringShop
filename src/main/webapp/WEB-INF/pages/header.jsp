@@ -30,7 +30,7 @@
 	                <a href="${pageContext.request.contextPath}/favorite" id="favorite"> Favorite </a>
 	            </div>
 	            <div class="navbar-item">
-	                <a href="${pageContext.request.contextPath}/logout" id="logout"> Logout </a>
+	                <a href="${pageContext.request.contextPath}/" id="logout"> Logout </a>
 	            </div>
         	</c:if>
         </div>
