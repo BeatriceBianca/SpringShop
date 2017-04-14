@@ -1,0 +1,22 @@
+table {
+	width: 60%;
+	border: 2px solid black;
+	margin-top: 124px;
+	margin-left: 30%;
+}
+
+#total {
+	margin-top: 280px;
+	display: block;
+	text-align: center;
+}
+
+#total div {
+	padding: 7px;
+	font-size: 18px;
+}
+
+#total button {
+	padding: 7px;
+	font-size: 15px;
+}
