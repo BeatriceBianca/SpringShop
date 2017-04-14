@@ -56,6 +56,11 @@ public class AdminController {
         return "newAccount";
     }
     
+    @RequestMapping(value = { "/cosCurent" }, method = RequestMethod.GET)
+    public String cosCurent(Model model) {
+ 
+        return "cosCurent";
+    }
 //    @RequestMapping(value = { "/accountInfo" }, method = RequestMethod.GET)
 //    public String accountInfo(Model model) {
 // 
