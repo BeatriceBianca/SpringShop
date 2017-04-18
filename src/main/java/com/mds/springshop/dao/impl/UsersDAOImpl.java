@@ -17,10 +17,10 @@ public class UsersDAOImpl implements UsersDAO {
 	 private SessionFactory sessionFactory;
 	 
 	 
-	 public Users findUser(int userId) {
+	 public Users findUserEmail(String email) {
 		 Session session = sessionFactory.getCurrentSession();
 	     Criteria crit = session.createCriteria(Users.class);
-	     crit.add(Restrictions.eq("userId", userId));
+	     crit.add(Restrictions.eq("email", email));
 	     return (Users) crit.uniqueResult();
 	    }
 	

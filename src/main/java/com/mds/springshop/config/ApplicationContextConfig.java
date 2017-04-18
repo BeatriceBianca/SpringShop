@@ -107,13 +107,13 @@ public class ApplicationContextConfig {
         return transactionManager;
     }
     
-    @Bean(name = "accountDAO")
+    @Bean(name = "UsersDAO")
     public UsersDAO getApplicantDAO() {
         return new UsersDAOImpl();
     }
     
-    @Bean(name = "accountDAO")
-    public UsersDAO getAccountDAO()  {
+    @Bean(name = "UsersDAO")
+    public UsersDAO getUsersDAO()  {
         return new UsersDAOImpl();
     }
 }

@@ -7,7 +7,7 @@
         <img src="images/logo.png" id="logo"/>
 
         <div class="navbar-list">
-        	<c:if test="${1 == 0}">
+        	<c:if test="${0 == 0}">
 	            <div class="navbar-item1">
 	                <a href="${pageContext.request.contextPath}/newAccount" id="creare-cont"> Creare cont </a>
 	            </div>
