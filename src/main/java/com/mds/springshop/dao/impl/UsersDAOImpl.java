@@ -17,7 +17,7 @@ public class UsersDAOImpl implements UsersDAO {
 	 private SessionFactory sessionFactory;
 	 
 	 
-	 public Users findUserEmail(String email) {
+	 public Users findUserByEmail(String email) {
 		 Session session = sessionFactory.getCurrentSession();
 	     Criteria crit = session.createCriteria(Users.class);
 	     crit.add(Restrictions.eq("email", email));

@@ -43,7 +43,6 @@ public class MainController {
         return "/403";
     }
     
- 
     @RequestMapping("/")
     public String home() {
         return "index";

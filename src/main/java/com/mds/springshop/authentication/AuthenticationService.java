@@ -20,9 +20,8 @@ public class AuthenticationService implements UserDetailsService {
 	
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException
 	{
-		Users user=userDAO.findUserEmail(email);
+		Users user=userDAO.findUserByEmail(email);
 		System.out.println("User= " + user);
-		
 		
 		if(user==null)
 		{

@@ -4,5 +4,5 @@ import com.mds.springshop.entity.Users;
 
 public interface UsersDAO {
 	
-	public Users findUserEmail(String email);
+	public Users findUserByEmail(String email);
 }
