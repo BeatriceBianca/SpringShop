@@ -7,7 +7,7 @@
         <img src="images/logo.png" id="logo"/>
 
         <div class="navbar-list">
-        	<c:if test="${0 == 0}">
+        	<c:if test="${pageContext.request.userPrincipal.name == null}">
 	            <div class="navbar-item1">
 	                <a href="${pageContext.request.contextPath}/newAccount" id="creare-cont"> Creare cont </a>
 	            </div>
@@ -16,7 +16,7 @@
 	            </div>
         	</c:if>
         	
-        	<c:if test="${0 == 0}">
+        	<c:if test="${pageContext.request.userPrincipal.name != null}">
 	            <div class="navbar-item">
 	                <a href="${pageContext.request.contextPath}/profil" id="profil"> Profil </a>
 	            </div>

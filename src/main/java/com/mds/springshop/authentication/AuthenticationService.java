@@ -18,8 +18,6 @@ public class AuthenticationService implements UserDetailsService {
 	@Autowired
 	private UsersDAO userDAO;
 	
-	
-	@Override
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException
 	{
 		Users user=userDAO.findUserEmail(email);
