@@ -12,44 +12,44 @@ import javax.persistence.Table;
 public class Users implements Serializable {
 	private static final long serialVersionUID = -2054386655979281969L;
 	
-	private int user_id;
-	private String last_name;
-	private String first_name;
+	private int id;
+	private String lastName;
+	private String firstName;
 	private String email;
 	private String password;
 	private String role;
 	private int phone;
 	private String address;
 	
-    @Id
-    @Column(name = "ids")
+  @Id
+  @Column(name = "ids")
 	public int getUser_id() {
 		return user_id;
 	}
     
-	public void setUser_id(int user_id) {
-		this.user_id = user_id;
+	public void setId(int id) {
+		this.id = id;
 	}
 	
-	@Column(name="last_name")
-	public String getLast_name() {
-		return last_name;
+	@Column(name = "last_name")
+	public String getLastName() {
+		return lastName;
 	}
 	
-	public void setLast_name(String last_name) {
-		this.last_name = last_name;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 	
-	@Column(name="first_name")
-	public String getFirst_name() {
-		return first_name;
+	@Column(name = "first_name")
+	public String getFirstName() {
+		return firstName;
 	}
 	
-	public void setFirst_name(String first_name) {
-		this.first_name = first_name;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 	
-	@Column(name="email")
+	@Column(name = "email")
 	public String getEmail() {
 		return email;
 	}
@@ -76,7 +76,7 @@ public class Users implements Serializable {
 		this.role = role;
 	}
 	
-	@Column(name="phone")
+	@Column(name = "phone")
 	public int getPhone() {
 		return phone;
 	}
@@ -85,7 +85,7 @@ public class Users implements Serializable {
 		this.phone = phone;
 	}
 	
-	@Column(name="address")
+	@Column(name = "address")
 	public String getAddress() {
 		return address;
 	}

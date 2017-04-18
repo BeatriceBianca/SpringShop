@@ -16,7 +16,6 @@ public class UsersDAOImpl implements UsersDAO {
 	 @Autowired
 	 private SessionFactory sessionFactory;
 	 
-	 
 	 public Users findUserByEmail(String email) {
 		 Session session = sessionFactory.getCurrentSession();
 	     Criteria crit = session.createCriteria(Users.class);
