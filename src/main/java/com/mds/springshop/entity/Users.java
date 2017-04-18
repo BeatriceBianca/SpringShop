@@ -24,7 +24,7 @@ public class Users implements Serializable {
   @Id
   @Column(name = "ids")
 	public int getUser_id() {
-		return user_id;
+		return id;
 	}
     
 	public void setId(int id) {
