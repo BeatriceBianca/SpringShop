@@ -1,10 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
  
 <div class="navbar">
     <div class="container-12">
-        <img src="images/logo.png" id="logo"/>
+        <a href="${pageContext.request.contextPath}/"> <img src="images/logo.png" id="logo"/> </a>
 
         <div class="navbar-list">
         	<c:if test="${pageContext.request.userPrincipal.name == null}">

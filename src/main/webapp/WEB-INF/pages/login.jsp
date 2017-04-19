@@ -22,15 +22,6 @@
 	   <div id = "login-container">	
 	   
 	   		<h1>Login</h1>
-	   		
-	 	    <c:if test="${param.error == 'true'}">
-	           <div style="color: red; margin: 10px 0px;">
-	 
-	               Login Failed!!!<br /> Reason :
-	               ${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}
-	 
-	           </div>
-     	    </c:if>
      	    
      	    <form method="POST"
            action="${pageContext.request.contextPath}/j_spring_security_check">
@@ -54,12 +45,15 @@
       	   </form>
 	 	</div>
  
-       <span class="error-message">${error }</span>
+       <c:if test="${param.error == 'true'}">
+	           <div style="color: red; margin: 0px 25%;">
+	 
+	               Login Failed!!!<br /> Reason :
+	               Wrong email or password!
+	 
+	           </div>
+      </c:if>
  
    </div>
- 
- 
-   
- 
 </body>
 </html>
