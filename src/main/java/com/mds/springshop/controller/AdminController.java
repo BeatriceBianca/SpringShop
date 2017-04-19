@@ -1,27 +1,15 @@
 package com.mds.springshop.controller;
- 
-import java.util.List;
- 
-import com.mds.springshop.model.PaginationResult;
+  
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.ResourceBundleMessageSource;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.support.ByteArrayMultipartFileEditor;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
  
 @Controller
 // Enable Hibernate Transaction.
@@ -45,21 +33,27 @@ public class AdminController {
     }
     
     @RequestMapping(value = { "/login" }, method = RequestMethod.GET)
-    public String login(Model model) {
+    public String getLoginPage(Model model) {
  
     	return "login";
     }
 
     @RequestMapping(value = { "/newAccount" }, method = RequestMethod.GET)
-    public String newAccount(Model model) {
+    public String getNewAccountPage(Model model) {
  
         return "newAccount";
     }
     
     @RequestMapping(value = { "/cosCurent" }, method = RequestMethod.GET)
-    public String cosCurent(Model model) {
+    public String getCosCurentPage(Model model) {
  
         return "cosCurent";
+    }
+    
+    @RequestMapping(value = { "/favorite" }, method = RequestMethod.GET)
+    public String getFavoritePage(Model model) {
+ 
+        return "favorite";
     }
 //    @RequestMapping(value = { "/accountInfo" }, method = RequestMethod.GET)
 //    public String accountInfo(Model model) {
