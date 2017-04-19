@@ -31,12 +31,6 @@
 					<div>Email: </div>
 					<div>
 						<input type = "text"/>
-						<span>@</span>
-						<select name = "mail">
-							<option value = "default">[Alege]</option>
-							<option value = "yahoo">yahoo.com</option>
-							<option value = "gmail">gmail.com</option>
-						</select>
 					</div>
 						
 					<div>Parola: </div>
