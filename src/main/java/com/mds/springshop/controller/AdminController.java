@@ -38,32 +38,4 @@ public class AdminController {
     	return "login";
     }
 
-    @RequestMapping(value = { "/newAccount" }, method = RequestMethod.GET)
-    public String getNewAccountPage(Model model) {
- 
-        return "newAccount";
-    }
-    
-    @RequestMapping(value = { "/cosCurent" }, method = RequestMethod.GET)
-    public String getCosCurentPage(Model model) {
- 
-        return "cosCurent";
-    }
-    
-    @RequestMapping(value = { "/favorite" }, method = RequestMethod.GET)
-    public String getFavoritePage(Model model) {
- 
-        return "favorite";
-    }
-//    @RequestMapping(value = { "/accountInfo" }, method = RequestMethod.GET)
-//    public String accountInfo(Model model) {
-// 
-//        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        System.out.println(userDetails.getPassword());
-//        System.out.println(userDetails.getUsername());
-//        System.out.println(userDetails.isEnabled());
-// 
-//        model.addAttribute("userDetails", userDetails);
-//        return "accountInfo";
-//    }
 }
