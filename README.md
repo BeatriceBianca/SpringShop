@@ -8,7 +8,7 @@ Membrii echipa: Ciolacu Florentina,
 			Panaite Mircea,
 			Petras Bogdan Andrei,
       
-Tema proiect:  magazin online cu articole sportive
+Tema proiect:  magazin online
 
 Functionalitatile site-ului:
 
