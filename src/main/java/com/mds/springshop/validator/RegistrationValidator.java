@@ -15,12 +15,10 @@ public class RegistrationValidator implements Validator{
 	private EmailValidator emailValidator = EmailValidator.getInstance();
 	@Autowired
 	private UsersDAO userDAO;
-	@Override
 	public boolean supports(Class<?> clazz)
 	{
 		return clazz==UsersInfo.class;
 	}
-	@Override
 	public void validate(Object target,Errors errors)
 	{
 		UsersInfo userInfo=(UsersInfo) target;

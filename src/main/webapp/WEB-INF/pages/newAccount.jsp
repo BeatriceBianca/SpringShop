@@ -18,71 +18,62 @@
 	
 	<jsp:include page="menu.jsp" />
 	
+	<form:form modelAttribute="registrationForm" method="GET">
 	<div id = "creare-cont-container">
-		
-		
-		<form:form modelAttribute="registrationForm" method="POST">
-			 <table style="text-align:left;">
-           <tr>
-               <td>First Name *</td>
-               <td style="color:red;">
-                  <c:if test="${not empty registrationForm.firstName}">
+			<h1>Creare cont</h1>
+			<div>
+				<div>
+					<div>Nume: </div>
+					<form:input path="lastName" />
+               		<form:errors path="lastName"/>
+					<br>
+					
+					<div>Prenume: </div>
+					<c:if test="${not empty registrationForm.firstName}">
                        <form:hidden path="firstName"/>
                        ${registrationForm.firstName}
-                  </c:if>
-                  <c:if test="${empty registrationForm.firstName}">
+                 	</c:if>
+                 	<c:if test="${empty registrationForm.firstName}">
                        <form:input path="firstName" />
                        <form:hidden path="newUser" />
-                  </c:if>
-               </td>
-               <td><form:errors path="firstName" /></td>
-           </tr>
- 
-           <tr>
-               <td>Last Name *</td>
-               <td><form:input path="lastName" /></td>
-               <td><form:errors path="lastName"/></td>
-           </tr>
- 
-           <tr>
-               <td>Email *</td>
-               <td><form:input path="email" /></td>
-               <td><form:errors path="email" /></td>
-           </tr>
-           <tr>
-               <td>Password *</td>
-               <td><form:input path="password" type="password"/></td>
-               <td><form:errors path="password" /></td>
-           </tr>
-           <tr>
-               <td>Phone *</td>
-               <td><form:input path="phone" /></td>
-               <td><form:errors path="phone" /></td>
-           </tr>
- 		   <tr>
-               <td>Address *</td>
-               <td><form:input path="address" /></td>
-               <td><form:errors path="address" /></td>
-           </tr>
- 			<tr>
-               <td>Id *</td>
-               <td><form:input path="user_id" /></td>
-               <td><form:errors path="user_id" /></td>
-           </tr>
-           <tr>
-               <td>Role *</td>
-               <td><form:input path="role" /></td>
-               <td><form:errors path="role" /></td>
-           </tr>
-           <tr>
-               <td>&nbsp;</td>
-               <td><input type="submit" value="Submit" /> <input type="reset"
-                   value="Reset" /></td>
-           </tr>
-       </table>
-   </form:form>
-		
-		
+                 	</c:if>
+                 	<form:errors path="firstName" />
+					<br>
+					
+					<div>Email: </div>
+					<form:input path="email" />
+              	    <form:errors path="email" />
+						
+					<div>Parola: </div>
+					<form:input path="password" />
+              	    <form:errors path="password" />
+					<br>
+				</div>
+			
+				<div>
+					<div>Telefon: </div>
+					<form:input path="phone" />
+	              	<form:errors path="phone" />
+					<br>
+					
+					<div>Adresa: </div>
+					<form:input path="address" />
+              	    <form:errors path="address" />
+					<br>
+					
+					<div>Tip cont: </div>
+					<form:select path="role">
+						<form:option value="MANAGER">Manager</form:option>
+						<form:option value="EMPLOYEE">Employee</form:option>
+					</form:select>
+              	    <form:errors path="role" />
+			
+				</div>
+		</div>
+		<br>
+		<input type="submit" value="Submit" /> 
+		<input type="reset" value="Reset" />
 	</div>
+	</form:form>
 </body>
 </html>

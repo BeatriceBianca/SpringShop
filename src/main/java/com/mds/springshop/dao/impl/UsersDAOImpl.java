@@ -28,7 +28,7 @@ public class UsersDAOImpl implements UsersDAO {
 	     crit.add(Restrictions.eq("email", email));
 	     return (Users) crit.uniqueResult();
 	    }
-	 @Override
+	 
 	 public void save(UsersInfo userInfo)
 	 {
 		 String email=userInfo.getEmail();
@@ -43,14 +43,14 @@ public class UsersDAOImpl implements UsersDAO {
 			 isNew=true;
 			 user=new Users();
 		 }
-		 user.setAddress(userInfo.getAddress());
-		 user.setEmail(userInfo.getEmail());
-		 user.setFirstName(userInfo.getFirstName());
 		 user.setLastName(userInfo.getLastName());
-		 user.setPhone(userInfo.getPhone());
-		 user.setId(userInfo.getUser_id());
-		 user.setRole(userInfo.getRole());
+		 user.setFirstName(userInfo.getFirstName());
+		 user.setEmail(userInfo.getEmail());
 		 user.setPassword(bCryptPasswordEncoder.encode(userInfo.getPassword()));
+		 user.setPhone(userInfo.getPhone());
+		 user.setAddress(userInfo.getAddress());
+		 user.setRole(userInfo.getRole());
+		 
 		 if(isNew){
 			 this.sessionFactory.getCurrentSession().persist(user);
 		 }

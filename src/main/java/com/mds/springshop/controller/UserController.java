@@ -24,6 +24,7 @@ public class UserController {
 	private UsersDAO userDAO;
 	@Autowired
 	UsersDAO usersDAO;
+	
 	@RequestMapping(value = { "/newAccount" }, method = RequestMethod.GET)
 	@Transactional(propagation = Propagation.NEVER)
 	public String saveUser(Model model,@ModelAttribute("registrationForm")  @Validated UsersInfo userInfo,BindingResult result,final RedirectAttributes redirectAttributes)

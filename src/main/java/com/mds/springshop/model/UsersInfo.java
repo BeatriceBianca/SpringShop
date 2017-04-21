@@ -3,7 +3,6 @@ package com.mds.springshop.model;
 import com.mds.springshop.entity.Users;
 
 public class UsersInfo {
-	private int user_id;
 	private String lastName;
 	private String firstName;
 	private String email;
@@ -32,12 +31,6 @@ public class UsersInfo {
 		this.phone=phone;
 		this.password=password;
 		this.address=address;
-	}
-	public int getUser_id() {
-		return user_id;
-	}
-	public void setUser_id(int user_id) {
-		this.user_id = user_id;
 	}
 	public String getRole() {
 		return role;
