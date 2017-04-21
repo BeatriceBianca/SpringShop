@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "USERS")
+@Table(name = "USERS1")
 public class Users implements Serializable {
 	private static final long serialVersionUID = -2054386655979281969L;
 	
@@ -22,7 +22,7 @@ public class Users implements Serializable {
 	private String address;
 	
   @Id
-  @Column(name = "user_id")
+  @Column(name = "ids")
 	public int getId() {
 		return user_id;
 	}
@@ -58,7 +58,7 @@ public class Users implements Serializable {
 		this.email = email;
 	}
 	
-	@Column(name="pass")
+	@Column(name="passwords")
 	public String getPassword() {
 		return password;
 	}
