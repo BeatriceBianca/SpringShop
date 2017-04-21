@@ -41,7 +41,7 @@ public class UserController {
 			model.addAttribute("message", message);
 			return "newAccount";
 		}
-		return "redirect:/index";
+		return "redirect:/login";
 	}
 
 	@RequestMapping(value = { "/profil" }, method = RequestMethod.GET)

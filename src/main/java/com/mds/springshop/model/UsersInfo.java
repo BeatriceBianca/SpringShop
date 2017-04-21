@@ -22,8 +22,9 @@ public class UsersInfo {
 		this.phone=user.getPhone();
 		this.password=user.getPassword();
 		this.address=user.getAddress();
+		this.role=user.getRole();
 	}
-	public UsersInfo(String lastName,String firstName,String email,String password,int phone,String address)
+	public UsersInfo(String lastName,String firstName,String email,String password,int phone,String address,String role)
 	{
 		this.firstName=firstName;
 		this.lastName=lastName;
@@ -31,6 +32,7 @@ public class UsersInfo {
 		this.phone=phone;
 		this.password=password;
 		this.address=address;
+		this.role=role;
 	}
 	public String getRole() {
 		return role;

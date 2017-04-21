@@ -5,9 +5,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.transaction.annotation.Transactional;
-
 import com.mds.springshop.dao.UsersDAO;
 import com.mds.springshop.entity.Users;
 import com.mds.springshop.model.UsersInfo;
@@ -17,10 +15,6 @@ public class UsersDAOImpl implements UsersDAO {
 	
 	 @Autowired
 	 private SessionFactory sessionFactory;
-	 @Autowired
-	 private BCryptPasswordEncoder bCryptPasswordEncoder;
-	 
-	 
 	 
 	 public Users findUserByEmail(String email) {
 		 Session session = sessionFactory.getCurrentSession();
@@ -46,7 +40,7 @@ public class UsersDAOImpl implements UsersDAO {
 		 user.setLastName(userInfo.getLastName());
 		 user.setFirstName(userInfo.getFirstName());
 		 user.setEmail(userInfo.getEmail());
-		 user.setPassword(bCryptPasswordEncoder.encode(userInfo.getPassword()));
+		 user.setPassword(userInfo.getPassword());
 		 user.setPhone(userInfo.getPhone());
 		 user.setAddress(userInfo.getAddress());
 		 user.setRole(userInfo.getRole());
