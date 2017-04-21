@@ -7,8 +7,6 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-
 import com.mds.springshop.authentication.AuthenticationService;
  
 @Configuration
@@ -18,13 +16,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
  
 	@Autowired
 	AuthenticationService myAuthenticationService;
-	@Bean
-    public BCryptPasswordEncoder bCryptPasswordEncoder() {
-        return new BCryptPasswordEncoder();
-	}
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-		auth.userDetailsService(myAuthenticationService).passwordEncoder(bCryptPasswordEncoder());
+		auth.userDetailsService(myAuthenticationService);
 	}
 
 	@Override
