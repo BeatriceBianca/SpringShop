@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %> 
  
 <div class="navbar">
     <div class="container-12">
@@ -15,18 +16,41 @@
         	</c:if>
         	
         	<c:if test="${pageContext.request.userPrincipal.name != null}">
+        		<security:authorize  access="hasAnyRole('MANAGER')">
+	        		<div class="navbar-item">
+		                <a href="${pageContext.request.contextPath}/newAccount" id="newAccountManager"> Creare cont </a>
+		            </div>
+	            </security:authorize>
 	            <div class="navbar-item">
 	                <a href="${pageContext.request.contextPath}/profil" id="profil"> Profil </a>
 	            </div>
-	            <div class="navbar-item">
-	                <a href="${pageContext.request.contextPath}/cosCurent" id="cos-curent"> Cos curent </a>
-	            </div>
-	            <div class="navbar-item">
-	                <a href="${pageContext.request.contextPath}/istoric" id="istoric"> Istoric comenzi </a>
-	            </div>
-	            <div class="navbar-item">
-	                <a href="${pageContext.request.contextPath}/favorite" id="favorite"> Favorite </a>
-	            </div>
+	            <security:authorize  access="hasAnyRole('BUYER')">
+		            <div class="navbar-item">
+		                <a href="${pageContext.request.contextPath}/cosCurent" id="cos-curent"> Cos curent </a>
+		            </div>
+		            <div class="navbar-item">
+		                <a href="${pageContext.request.contextPath}/istoric" id="istoric"> Istoric comenzi </a>
+		            </div>
+		            <div class="navbar-item">
+		                <a href="${pageContext.request.contextPath}/favorite" id="favorite"> Favorite </a>
+		            </div>
+	            </security:authorize>
+	            <security:authorize  access="hasAnyRole('SUPPLIER')">
+		            <div class="navbar-item">
+		                <a href="${pageContext.request.contextPath}/propunereOferta" id="propunereOferta"> Propune oferta </a>
+		            </div>
+		            <div class="navbar-item">
+		                <a href="${pageContext.request.contextPath}/istoricOferte" id="istoricOferte"> Istoric oferte </a>
+		            </div>
+	            </security:authorize>
+	            <security:authorize  access="hasAnyRole('MANAGER')">
+		            <div class="navbar-item">
+		                <a href="${pageContext.request.contextPath}/produse" id="produse"> Produse </a>
+		            </div>
+		            <div class="navbar-item">
+		                <a href="${pageContext.request.contextPath}/oferte" id="oferte"> Oferte </a>
+		            </div>
+	            </security:authorize>
 	            <div class="navbar-item">
 	                <a href="${pageContext.request.contextPath}/logout" id="logout"> Logout </a>
 	            </div>
