@@ -32,6 +32,9 @@ public class UserController {
 		if (result.hasErrors()) {
             return "newAccount";
 		}
+		if (userInfo.getLastName() == null) {
+			return "newAccount";
+		}
 		try{
 			userDAO.save(userInfo);
 		}
