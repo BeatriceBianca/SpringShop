@@ -28,9 +28,5 @@ public class MainController {
     public String accessDenied() {
         return "/403";
     }
-    
-    @RequestMapping("/")
-    public String home() {
-        return "index";
-    }
+ 
 }
