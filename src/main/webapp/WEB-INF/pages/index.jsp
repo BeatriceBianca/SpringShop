@@ -31,6 +31,7 @@
 	              ${products.price} lei
 	           </td>
 	           <td>
+	           		<button>Vezi detalii</button>
 	           </td>
            </tr>
 		</c:forEach>
@@ -40,6 +41,7 @@
        <div class="page-navigator">
           <c:forEach items="${paginationProducts.navigationPages}" var = "page">
               <c:if test="${page != -1 }">
+                <a href="index?page=${page}" class="nav-item">${page}</a>
               </c:if>
               <c:if test="${page == -1 }">
                 <span class="nav-item"> ... </span>
