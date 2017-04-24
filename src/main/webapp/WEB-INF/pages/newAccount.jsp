@@ -46,7 +46,7 @@
               	    <form:errors path="email" />
 						
 					<div>Parola: </div>
-					<form:input path="password" />
+					<form:input path="password" type="password"/>
               	    <form:errors path="password" />
 					<br>
 				</div>
