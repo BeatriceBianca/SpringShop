@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -16,47 +19,65 @@
 	
 	<jsp:include page="menu.jsp" />
 	
+	<form:form modelAttribute="registrationForm" method="GET">
 	<div id = "creare-cont-container">
 			<h1>Creare cont</h1>
 			<div>
 				<div>
 					<div>Nume: </div>
-					<input type = "text"/>
+					<form:input path="lastName" />
+               		<form:errors path="lastName"/>
 					<br>
 					
 					<div>Prenume: </div>
-					<input type = "text"/>
+					<c:if test="${not empty registrationForm.firstName}">
+                       <form:hidden path="firstName"/>
+                       ${registrationForm.firstName}
+                 	</c:if>
+                 	<c:if test="${empty registrationForm.firstName}">
+                       <form:input path="firstName" />
+                       <form:hidden path="newUser" />
+                 	</c:if>
+                 	<form:errors path="firstName" />
 					<br>
 					
 					<div>Email: </div>
-					<div>
-						<input type = "text"/>
-					</div>
+					<form:input path="email" />
+              	    <form:errors path="email" />
 						
 					<div>Parola: </div>
-					<input type = "text"/>
+					<form:input path="password" type="password"/>
+              	    <form:errors path="password" />
 					<br>
 				</div>
 			
-			<div>
-				<div>Telefon: </div>
-				<input type = "text"/>
-				<br>
-				
-				<div>Adresa: </div>
-				<input type = "text"/>
-				<br>
-				
-				<div>Tip cont: </div>
-				<select>
-					<option>Cumparator</option>
-					<option>Furnizor</option>
-				</select>
+				<div>
+					<div>Telefon: </div>
+					<form:input path="phone" />
+	              	<form:errors path="phone" />
+					<br>
+					
+					<div>Adresa: </div>
+					<form:input path="address" />
+              	    <form:errors path="address" />
+					<br>
+					
+					<div>Tip cont: </div>
+					<form:select path="role">
+						<form:option value="BUYER">Buyer</form:option>
+						<form:option value="SUPPLIER">Supplier</form:option>
+						<security:authorize  access="hasAnyRole('MANAGER')">
+							<form:option value="MANAGER">Manager</form:option>
+						</security:authorize>
+					</form:select>
+              	    <form:errors path="role" />
 			
-			</div>
+				</div>
 		</div>
 		<br>
-		<button id = "creare-cont-button">Creare cont</button>
+		<input type="submit" value="Submit" /> 
+		<input type="reset" value="Reset" />
 	</div>
+	</form:form>
 </body>
 </html>
