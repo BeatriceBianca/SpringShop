@@ -8,6 +8,7 @@ public class ProductInfo {
 	private String name;
 	private int productsLeftInStock;
 	private int price;
+	private int status;
  
     private boolean newProduct=false;
  
@@ -18,12 +19,14 @@ public class ProductInfo {
         this.name = product.getName();
         this.productsLeftInStock = product.getProductsLeftInStock();
         this.price = product.getPrice();
+        this.status = product.getStatus();
     }
  
-    public ProductInfo(String name, int productsLeftInStock, int price) {
+    public ProductInfo(String name, int productsLeftInStock, int price, int status) {
         this.name = name;
         this.productsLeftInStock = productsLeftInStock;
         this.price = price;
+        this.status = status;
     }
  
     public String getName() {
@@ -48,6 +51,14 @@ public class ProductInfo {
 
 	public void setPrice(int price) {
 		this.price = price;
+	}
+	
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
 	}
 
 	public boolean isNewProduct() {

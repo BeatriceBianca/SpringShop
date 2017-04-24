@@ -22,8 +22,9 @@ public class ProductsDAOImpl implements ProductsDAO {
     public PaginationResult<ProductInfo> queryProducts(int page, int maxResult, int maxNavigationPage) {
 
     	String sql = "Select new " + ProductInfo.class.getName() //
-                + "(p.name, p.productsLeftInStock, p.price) " + " from "//
-                + Products.class.getName() + " p ";
+                + "(p.name, p.productsLeftInStock, p.price, p.status) " + " from "//
+                + Products.class.getName() + " p " 
+                + " where p.status = 1";
     	
     	Session session = sessionFactory.getCurrentSession();
     	 
