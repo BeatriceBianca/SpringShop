@@ -17,6 +17,8 @@ public class Products implements Serializable {
 	private int productsLeftInStock;
 	private int price;
 	private int categoryId;
+	private int supplierId;
+	private int status;
 	
 	@Id
 	@Column(name = "product_id")
@@ -62,6 +64,24 @@ public class Products implements Serializable {
 	
 	public void setCategoryId(int categoryId) {
 		this.categoryId = categoryId;
+	}
+
+	@Column(name = "supplier_id")
+	public int getSupplierId() {
+		return supplierId;
+	}
+
+	public void setSupplierId(int supplierId) {
+		this.supplierId = supplierId;
+	}
+
+	@Column(name = "status")
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
 	}
 	
 }
