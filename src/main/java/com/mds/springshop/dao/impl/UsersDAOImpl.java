@@ -21,8 +21,13 @@ public class UsersDAOImpl implements UsersDAO {
 	     Criteria crit = session.createCriteria(Users.class);
 	     crit.add(Restrictions.eq("email", email));
 	     return (Users) crit.uniqueResult();
-	    }
-	 
+	 }
+	 public UsersInfo findUserInfo(String email){
+		 Users user=this.findUserByEmail(email);
+		 if(user==null)
+			 return null;
+		 return new UsersInfo(user.getLastName(),user.getFirstName(),user.getEmail(),user.getPassword(),user.getPhone(),user.getAddress(),user.getRole());
+	 }
 	 public void save(UsersInfo userInfo)
 	 {
 		 String email=userInfo.getEmail();

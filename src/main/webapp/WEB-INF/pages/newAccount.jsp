@@ -19,7 +19,7 @@
 	
 	<jsp:include page="menu.jsp" />
 	
-	<form:form modelAttribute="registrationForm" method="GET">
+	<form:form modelAttribute="registrationForm" method="POST">
 	<div id = "creare-cont-container">
 			<h1>Creare cont</h1>
 			<div>

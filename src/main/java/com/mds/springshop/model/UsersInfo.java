@@ -8,7 +8,7 @@ public class UsersInfo {
 	private String email;
 	private String password;
 	private String role;
-	private int phone;
+	private long phone;
 	private String address;
 	private boolean newUser=false;
 	public UsersInfo(){
@@ -24,7 +24,7 @@ public class UsersInfo {
 		this.address=user.getAddress();
 		this.role=user.getRole();
 	}
-	public UsersInfo(String lastName,String firstName,String email,String password,int phone,String address,String role)
+	public UsersInfo(String lastName,String firstName,String email,String password,long phone,String address,String role)
 	{
 		this.firstName=firstName;
 		this.lastName=lastName;
@@ -64,10 +64,10 @@ public class UsersInfo {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public int getPhone() {
+	public long getPhone() {
 		return phone;
 	}
-	public void setPhone(int phone) {
+	public void setPhone(long phone) {
 		this.phone = phone;
 	}
 	public String getAddress() {
