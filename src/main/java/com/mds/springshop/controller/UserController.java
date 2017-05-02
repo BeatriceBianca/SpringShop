@@ -9,15 +9,19 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.mds.springshop.dao.ProductsDAO;
 import com.mds.springshop.dao.UsersDAO;
 import com.mds.springshop.entity.Users;
 import com.mds.springshop.model.UsersInfo;
+import com.mds.springshop.validator.RegistrationValidator;
 
 @Controller
 public class UserController {
@@ -28,8 +32,34 @@ public class UserController {
 	
 	@Autowired
 	UsersDAO usersDAO;
+	@Autowired
+	private RegistrationValidator registrationValidator;
+	@InitBinder
+	public void myInitBinder(WebDataBinder dataBinder)
+	{
+		Object target=dataBinder.getTarget();
+		if(target==null)
+			return;
+		System.out.println("Target="+target);
+		if(target.getClass()==UsersInfo.class)
+			dataBinder.setValidator(registrationValidator);
+	}
+	@RequestMapping(value={"/newAccount"},method=RequestMethod.GET)
+	public String user(Model model,@RequestParam(value="email",defaultValue="") String email)
+	{
+		UsersInfo userInfo=null;
+		if(email!=null)
+			userInfo=usersDAO.findUserInfo(email);
+		if(userInfo==null)
+		{
+			userInfo=new UsersInfo();
+			userInfo.setNewUser(true);
+		}
+		model.addAttribute("registrationForm",userInfo);
+		return "newAccount";
+	}
 	
-	@RequestMapping(value = { "/newAccount" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "/newAccount" }, method = RequestMethod.POST)
 	@Transactional(propagation = Propagation.NEVER)
 	public String saveUser(Model model,@ModelAttribute("registrationForm")  @Validated UsersInfo userInfo,BindingResult result,final RedirectAttributes redirectAttributes)
 	{

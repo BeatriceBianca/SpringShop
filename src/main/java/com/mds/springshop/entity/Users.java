@@ -18,7 +18,7 @@ public class Users implements Serializable {
 	private String email;
 	private String password;
 	private String role;
-	private int phone;
+	private long phone;
 	private String address;
 	
   @Id
@@ -77,11 +77,11 @@ public class Users implements Serializable {
 	}
 	
 	@Column(name = "phone")
-	public int getPhone() {
+	public long getPhone() {
 		return phone;
 	}
 	
-	public void setPhone(int phone) {
+	public void setPhone(long phone) {
 		this.phone = phone;
 	}
 	

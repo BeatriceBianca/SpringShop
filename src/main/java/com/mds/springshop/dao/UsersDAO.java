@@ -6,5 +6,6 @@ import com.mds.springshop.model.UsersInfo;
 public interface UsersDAO {
 	
 	public Users findUserByEmail(String email);
+	public UsersInfo findUserInfo(String email);
 	public void save(UsersInfo userInfo);
 }
