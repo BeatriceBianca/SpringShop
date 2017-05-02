@@ -43,12 +43,14 @@ public class AdminController {
     @RequestMapping(value = { "/login" }, method = RequestMethod.GET)
     public String getLoginPage(Model model) {
  
+    	productDAO.setCategoryType(5);
     	return "login";
     }
 	
 	@RequestMapping({ "/" })
 	public String firstPage() {
 
+	  productDAO.setCategoryType(5);
       return "redirect:/index";
   }
 	

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.mds.springshop.dao.ProductsDAO;
 import com.mds.springshop.dao.UsersDAO;
 import com.mds.springshop.entity.Users;
 import com.mds.springshop.model.UsersInfo;
@@ -22,6 +23,9 @@ import com.mds.springshop.model.UsersInfo;
 public class UserController {
 	@Autowired
 	private UsersDAO userDAO;
+	@Autowired
+	private ProductsDAO productDAO;
+	
 	@Autowired
 	UsersDAO usersDAO;
 	
@@ -44,6 +48,7 @@ public class UserController {
 			model.addAttribute("message", message);
 			return "newAccount";
 		}
+    productDAO.setCategoryType(5);
 		return "redirect:/";
 	}
 
@@ -55,6 +60,8 @@ public class UserController {
 		Users user;
 		user = usersDAO.findUserByEmail(userDetails.getUsername());
 		model.addAttribute("user", user);
+		
+		productDAO.setCategoryType(5);
         return "profil";
     }
 }
