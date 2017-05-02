@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.mds.springshop.dao.ProductsDAO;
 import com.mds.springshop.dao.UsersDAO;
 import com.mds.springshop.entity.Users;
 
@@ -15,11 +16,15 @@ import com.mds.springshop.entity.Users;
 public class UserController {
 
 	@Autowired
+	private ProductsDAO productDAO;
+	
+	@Autowired
 	UsersDAO usersDAO;
 	
 	@RequestMapping(value = { "/newAccount" }, method = RequestMethod.GET)
     public String getNewAccountPage(Model model) {
  
+		productDAO.setCategoryType(5);
         return "newAccount";
     }
 	
@@ -31,6 +36,8 @@ public class UserController {
 		Users user;
 		user = usersDAO.findUserByEmail(userDetails.getUsername());
 		model.addAttribute("user", user);
+		
+		productDAO.setCategoryType(5);
         return "profil";
     }
 }
