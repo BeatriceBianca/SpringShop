@@ -9,6 +9,7 @@ public class ProductInfo {
 	private int productsLeftInStock;
 	private int price;
 	private int status;
+	private int category;
  
     private boolean newProduct=false;
  
@@ -20,13 +21,15 @@ public class ProductInfo {
         this.productsLeftInStock = product.getProductsLeftInStock();
         this.price = product.getPrice();
         this.status = product.getStatus();
+        this.category = product.getCategoryId();
     }
  
-    public ProductInfo(String name, int productsLeftInStock, int price, int status) {
+    public ProductInfo(String name, int productsLeftInStock, int price, int status, int category) {
         this.name = name;
         this.productsLeftInStock = productsLeftInStock;
         this.price = price;
         this.status = status;
+        this.category = category;
     }
  
     public String getName() {
@@ -59,6 +62,14 @@ public class ProductInfo {
 
 	public void setStatus(int status) {
 		this.status = status;
+	}
+	
+	public int getCategory() {
+		return category;
+	}
+
+	public void setCategory(int category) {
+		this.category = category;
 	}
 
 	public boolean isNewProduct() {

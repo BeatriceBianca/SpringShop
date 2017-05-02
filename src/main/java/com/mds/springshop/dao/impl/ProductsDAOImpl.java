@@ -16,15 +16,33 @@ import com.mds.springshop.model.ProductInfo;
 @Component
 public class ProductsDAOImpl implements ProductsDAO {
 
+	private volatile int categoryType = 5;
+	
 	@Autowired
     private SessionFactory sessionFactory;
+	
+    public int getCategoryType() {
+        return categoryType;
+    }
 
-    public PaginationResult<ProductInfo> queryProducts(int page, int maxResult, int maxNavigationPage) {
+    public void setCategoryType(int categoryType) {
+        this.categoryType = categoryType;
+    }
 
-    	String sql = "Select new " + ProductInfo.class.getName() //
-                + "(p.name, p.productsLeftInStock, p.price, p.status) " + " from "//
-                + Products.class.getName() + " p " 
-                + " where p.status = 1";
+    public PaginationResult<ProductInfo> queryProducts(int page, int maxResult, int maxNavigationPage, int category) {
+
+    	String sql;
+    	if (category == 5) {
+    		sql = "Select new " + ProductInfo.class.getName() //
+                    + "(p.name, p.productsLeftInStock, p.price, p.status, p.categoryId) " + " from "//
+                    + Products.class.getName() + " p " 
+                    + " where p.status = 1";
+    	} else {
+    		sql = "Select new " + ProductInfo.class.getName() //
+                    + "(p.name, p.productsLeftInStock, p.price, p.status, p.categoryId) " + " from "//
+                    + Products.class.getName() + " p " 
+                    + " where p.status = 1 and p.categoryId = " + category;
+    	}
     	
     	Session session = sessionFactory.getCurrentSession();
     	 
