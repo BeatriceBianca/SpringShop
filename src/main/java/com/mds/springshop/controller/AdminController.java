@@ -28,7 +28,7 @@ public class AdminController {
     private ResourceBundleMessageSource messageSource;
     
     @Autowired
-	  private ProductsDAO productDAO;
+	private ProductsDAO productDAO;
  
     @InitBinder
     public void myInitBinder(WebDataBinder dataBinder) {
@@ -60,8 +60,9 @@ public class AdminController {
 	  final int maxNavigationPage = 10;
 	 
 	  PaginationResult<ProductInfo> result = productDAO.queryProducts(page, //
-	                maxResult, maxNavigationPage);
+	                maxResult, maxNavigationPage, productDAO.getCategoryType());
       model.addAttribute("paginationProducts", result);
+      model.addAttribute("categoryType", productDAO.getCategoryType());
       return "index";
   }
 
