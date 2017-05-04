@@ -20,6 +20,9 @@ public class PaginationResult<E> {
    private List<Integer> navigationPages;
  
    // @page: 1, 2, ..
+   public PaginationResult(){
+	   
+   }
    public PaginationResult(Query query, int page, int maxResult, int maxNavigationPage) {
        final int pageIndex = page - 1 < 0 ? 0 : page - 1;
  

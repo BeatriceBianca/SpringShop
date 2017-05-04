@@ -5,16 +5,21 @@ import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.mds.springshop.dao.ProductsDAO;
 import com.mds.springshop.model.PaginationResult;
 import com.mds.springshop.model.ProductInfo;
+import com.mds.springshop.model.UsersInfo;
  
 @Controller
 // Enable Hibernate Transaction.
@@ -52,9 +57,20 @@ public class AdminController {
 
 	  productDAO.setCategoryType(5);
       return "redirect:/index";
-  }
+	}
+//	
+	@RequestMapping(value = { "/index" }, method = RequestMethod.POST)
+	public String critForm(Model model,@ModelAttribute("categoryForm")  ProductInfo productInfo,BindingResult result,final RedirectAttributes redirectAttributes)
+	{
+//		productDAO.setCategoryType(7);
+		if(productInfo.getCategory()!=5)
+			productDAO.setCategoryType(productInfo.getCategory());
+		return "redirect:/index";
+	}
+
 	
-	@RequestMapping({ "/index" })
+//	
+	@RequestMapping(value={ "/index" },method=RequestMethod.GET)
 	public String listProductHandler(Model model,
           @RequestParam(value = "page", defaultValue = "1") int page) {
 
@@ -65,6 +81,9 @@ public class AdminController {
 	                maxResult, maxNavigationPage, productDAO.getCategoryType());
       model.addAttribute("paginationProducts", result);
       model.addAttribute("categoryType", productDAO.getCategoryType());
+      ProductInfo productInfo=new ProductInfo();
+      
+      model.addAttribute("categoryForm",productInfo);
       return "index";
   }
 
