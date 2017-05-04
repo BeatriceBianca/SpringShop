@@ -4,7 +4,11 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ForeignKey;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -16,8 +20,8 @@ public class Products implements Serializable {
 	private String name;
 	private int productsLeftInStock;
 	private int price;
-	private int categoryId;
-	private int supplierId;
+	private Categories categoryId;
+	private Users supplierId;
 	private int status;
 	
 	@Id
@@ -29,6 +33,27 @@ public class Products implements Serializable {
 	public void setId(int id) {
 		this.id = id;
 	}
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "CATEGORY_ID", nullable = false, //
+		foreignKey = @ForeignKey(name = "category_fk") )
+			public Categories getCategoryId() {
+				return categoryId;
+			}
+			public void setCategoryId(Categories categoryId) {
+				this.categoryId = categoryId;
+			}
+	    
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "SUPPLIER_ID", nullable = false, //
+		foreignKey = @ForeignKey(name = "products_user_fk") )
+		    public Users getSupplierId() {
+		        return supplierId;
+		    }
+		 
+		    public void setSupplierId(Users supplierId) {
+		        this.supplierId = supplierId;
+		    }
 	
 	@Column(name = "product_name")
 	public String getName() {
@@ -55,24 +80,6 @@ public class Products implements Serializable {
 	
 	public void setPrice(int price) {
 		this.price = price;
-	}
-	
-	@Column(name = "category_id")
-	public int getCategoryId() {
-		return categoryId;
-	}
-	
-	public void setCategoryId(int categoryId) {
-		this.categoryId = categoryId;
-	}
-
-	@Column(name = "supplier_id")
-	public int getSupplierId() {
-		return supplierId;
-	}
-
-	public void setSupplierId(int supplierId) {
-		this.supplierId = supplierId;
 	}
 
 	@Column(name = "status")

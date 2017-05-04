@@ -4,7 +4,11 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ForeignKey;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -15,8 +19,8 @@ public class Review implements Serializable {
 	private int id;
 	private int rating;
 	private String commentary;
-	private int productId;
-	private int userId;
+	private Products productId;
+	private Users userId;
 	
 	@Id
 	@Column(name = "review_id")
@@ -46,22 +50,25 @@ public class Review implements Serializable {
 		this.commentary = commentary;
 	}
 	
-	@Column(name = "product_id")
-	public int getProductId() {
-		return productId;
-	}
-	
-	public void setProductId(int productId) {
-		this.productId = productId;
-	}
-	
-	@Column(name = "user_id")
-	public int getUserId() {
-		return userId;
-	}
-	
-	public void setUserId(int userId) {
-		this.userId = userId;
-	}
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "PRODUCT_ID", nullable = false, //
+		foreignKey = @ForeignKey(name = "review_product_fk") )
+			public Products getProductId() {
+				return productId;
+			}
+			public void setProductId(Products productId) {
+				this.productId = productId;
+			}
+	    
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "USER_ID", nullable = false, //
+		foreignKey = @ForeignKey(name = "review_user_fk") )
+		    public Users getUserId() {
+		        return userId;
+		    }
+		 
+		    public void setUserId(Users UserId) {
+		        this.userId = userId;
+		    }
 	
 }
