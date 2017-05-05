@@ -31,7 +31,9 @@
 	              ${products.price} lei
 	           </td>
 	           <td>
-	           		<button>Vezi detalii</button>
+	           		<a href="./detaliiProdus/${products.id}">
+	           			<button>Vezi detalii</button>
+	           		</a>
 	           </td>
            </tr>
 		</c:forEach>

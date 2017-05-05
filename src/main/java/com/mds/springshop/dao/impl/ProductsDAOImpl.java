@@ -1,5 +1,9 @@
 package com.mds.springshop.dao.impl;
 
+import java.util.List;
+
+import javax.persistence.TypedQuery;
+
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -34,12 +38,12 @@ public class ProductsDAOImpl implements ProductsDAO {
     	String sql;
     	if (category == 5) {
     		sql = "Select new " + ProductInfo.class.getName() //
-                    + "(p.name, p.productsLeftInStock, p.price, p.status, p.categoryId) " + " from "//
+                    + "(p.name, p.productsLeftInStock, p.price, p.status, p.categoryId, p.id) " + " from "//
                     + Products.class.getName() + " p " 
                     + " where p.status = 1";
     	} else {
     		sql = "Select new " + ProductInfo.class.getName() //
-                    + "(p.name, p.productsLeftInStock, p.price, p.status, p.categoryId) " + " from "//
+                    + "(p.name, p.productsLeftInStock, p.price, p.status, p.categoryId, p.id) " + " from "//
                     + Products.class.getName() + " p " 
                     + " where p.status = 1 and p.categoryId = " + category;
     	}
@@ -49,5 +53,23 @@ public class ProductsDAOImpl implements ProductsDAO {
     	Query query = session.createQuery(sql);
     	
     	return new PaginationResult<ProductInfo>(query, page, maxResult, maxNavigationPage);
+    }
+    
+    public ProductInfo getProductById(int id) {
+    	
+    	String sql;
+    	
+    	sql = "Select new " + ProductInfo.class.getName() //
+                + "(p.name, p.productsLeftInStock, p.price, p.status, p.categoryId, p.id) " + " from "//
+                + Products.class.getName() + " p " 
+                + " where p.id = " + id;
+    	
+    	Session session = sessionFactory.getCurrentSession();
+   	 
+    	Query query = session.createQuery(sql);
+    	
+    	ProductInfo product = (ProductInfo) query.list().get(0);
+    	
+    	return product;
     }
 }
