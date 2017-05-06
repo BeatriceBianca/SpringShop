@@ -14,9 +14,7 @@
 	<jsp:include page="header.jsp" />
 	
 	<jsp:include page="menu.jsp" />
-	
-	<jsp:include page="criterii.jsp" />
-	
+
 	<table>
        <tr>
            <th>Nume produs</th>

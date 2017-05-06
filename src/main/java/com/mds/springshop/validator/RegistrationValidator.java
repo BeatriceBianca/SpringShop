@@ -21,7 +21,7 @@ public class RegistrationValidator implements Validator{
 	{
 		return clazz==UsersInfo.class;
 	}
-
+  
 	public void validate(Object target,Errors errors)
 	{
 		UsersInfo userInfo=(UsersInfo) target;

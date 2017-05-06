@@ -8,12 +8,30 @@ import com.mds.springshop.entity.Products;
 public class ProductInfo {
 	private String name;
 	private int productsLeftInStock;
-	private int price;
+	private long price;
 	private int status;
 	private Categories category;
-	private int id;
- 
-    private boolean newProduct=false;
+  private int id;
+	private long minPrice;
+	private long maxPrice;
+	
+    public long getMinPrice() {
+		return minPrice;
+	}
+
+	public void setMinPrice(long minPrice) {
+		this.minPrice = minPrice;
+	}
+
+	public long getMaxPrice() {
+		return maxPrice;
+	}
+
+	public void setMaxPrice(long maxPrice) {
+		this.maxPrice = maxPrice;
+	}
+
+	private boolean newProduct=false;
  
     public ProductInfo() {
     }
@@ -52,11 +70,11 @@ public class ProductInfo {
 		this.productsLeftInStock = productsLeftInStock;
 	}
 
-	public int getPrice() {
+	public long getPrice() {
 		return price;
 	}
 
-	public void setPrice(int price) {
+	public void setPrice(long price) {
 		this.price = price;
 	}
 	

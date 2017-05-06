@@ -75,11 +75,11 @@ public class Products implements Serializable {
 	}
 	
 	@Column(name = "price")
-	public int getPrice() {
+	public long getPrice() {
 		return price;
 	}
 	
-	public void setPrice(int price) {
+	public void setPrice(long price) {
 		this.price = price;
 	}
 
