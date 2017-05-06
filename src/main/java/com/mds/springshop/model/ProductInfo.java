@@ -10,7 +10,7 @@ public class ProductInfo {
 	private int productsLeftInStock;
 	private long price;
 	private int status;
-	private int category;
+	private Categories category;
   private int id;
 	private long minPrice;
 	private long maxPrice;
@@ -45,7 +45,7 @@ public class ProductInfo {
         this.id = product.getId();
     }
  
-    public ProductInfo(String name, int productsLeftInStock, long price, int status, int category, int id) {
+    public ProductInfo(String name, int productsLeftInStock, int price, int status, Categories category, int id) {
         this.name = name;
         this.productsLeftInStock = productsLeftInStock;
         this.price = price;
@@ -86,11 +86,11 @@ public class ProductInfo {
 		this.status = status;
 	}
 	
-	public int getCategory() {
+	public Categories getCategory() {
 		return category;
 	}
 
-	public void setCategory(int category) {
+	public void setCategory(Categories category) {
 		this.category = category;
 	}
 
