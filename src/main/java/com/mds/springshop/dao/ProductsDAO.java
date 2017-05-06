@@ -11,5 +11,7 @@ public interface ProductsDAO {
  
     public PaginationResult<ProductInfo> queryProducts(int page,
             int maxResult, int maxNavigationPage, int category);
+    
+    public ProductInfo getProductById(int id);
  
 }
