@@ -55,7 +55,7 @@
 	           </security:authorize>
 	           <security:authorize  access="hasAnyRole('MANAGER')">
 		           <td>
-		           		<a href="./favorite">
+		           		<a href="./editareProdus">
 		           			<button>Editeaza produs</button>
 		           		</a>
 		           </td>

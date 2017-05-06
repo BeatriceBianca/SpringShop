@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -19,11 +19,14 @@
 	<jsp:include page="menu.jsp" />
 	
 	<div id = "productDetails-container">
+	<form:form modelAttribute="saveProductForm" method="GET">
 		<div>
 				<div id="detalii">
-				<!--  BUYER  -->
-					<security:authorize  access="hasAnyRole('BUYER')">
-						<h1 id="name">${product.name} </h1>
+					
+					<!--  MANAGER  -->
+					
+					<security:authorize  access="hasAnyRole('MANAGER')">
+						<form:input path="name" id="m-name" value="${product.name}"/>
 		
 						<c:if test="${product.productsLeftInStock == 0}">
 							<div id="stoc"> [ Stoc epuizat ] </div>
@@ -35,23 +38,20 @@
 	
 						<br><br>
 					
-						<div id="descriere"> Afisajul aproape fara margini maximizeaza spatiul de ecran, 
-						înghesuind un afisaj de 15,6 inchi, într-un laptop mai aproape dimensiunea unei 14 inchi, 
-						datorita unui cadru are o grosime de numai 5,7 mm. 
-						Design unic: având o înaltime de numai 11 – 17 mm si o greutate minima de aproape 1,8 kg cu unitate SSD, XPS
-	 					15 este cel mai usor laptop de 38,1 cm (15 inchi) înalt performant din lume. </div>
 						
-						<div id="pret"> Pret: ${product.price} lei </div>
+						<br><br><br>
+						
+						<form:input path="price" id="m-pret" value="${product.price} lei"/>
 					</security:authorize>
 				</div>
 				
 				<div id="butoane">
-					<security:authorize  access="hasAnyRole('BUYER')">
-							<button> Adauga in cos </button>
-							<button> Adauga la favorite </button>
+					<security:authorize  access="hasAnyRole('MANAGER')">
+						<input id="submit" type="submit" value="Submit" /> 
 					</security:authorize>
 				</div>
 		</div>
+	</form:form>
 	</div>
 </body>
 </html>

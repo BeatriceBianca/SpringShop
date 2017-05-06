@@ -44,6 +44,7 @@ public class UserController {
 		if(target.getClass()==UsersInfo.class)
 			dataBinder.setValidator(registrationValidator);
 	}
+	
 	@RequestMapping(value={"/newAccount"},method=RequestMethod.GET)
 	public String user(Model model,@RequestParam(value="email",defaultValue="") String email)
 	{
