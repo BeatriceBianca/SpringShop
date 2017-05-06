@@ -78,7 +78,7 @@ public class Orders implements Serializable {
 		        return userId;
 		    }
 		 
-		    public void setUserId(Users UserId) {
+		    public void setUserId(Users userId) {
 		        this.userId = userId;
 		    }
 	
