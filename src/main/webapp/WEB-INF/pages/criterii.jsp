@@ -22,8 +22,8 @@
 		<br>
 			
 		<div> Disponibilitate </div>
-			<form:radiobutton path="status"  value="10" /> Toate<br>
-			<form:radiobutton path="status"  value="1"/> In stoc 
+			<form:radiobutton path="productsLeftInStock"  value="0" /> Toate<br>
+			<form:radiobutton path="productsLeftInStock"  value="1"/> In stoc 
 		<br><br>
 			
 		<button id="criterii"> Submit </button>	

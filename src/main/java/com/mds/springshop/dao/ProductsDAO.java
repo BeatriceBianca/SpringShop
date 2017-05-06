@@ -12,10 +12,10 @@ public interface ProductsDAO {
     public void setPriceMin(long priceMin);
     public long getPriceMax();
     public void setPriceMax(long priceMax);
-    public int getStatus();
-    public void setStatus(int status);
+    public int getStock();
+    public void setStock(int stock);
     public PaginationResult<ProductInfo> queryProducts(int page,
-            int maxResult, int maxNavigationPage, int category,long minPrice,long maxPrice,int status);
+            int maxResult, int maxNavigationPage, int category,long minPrice,long maxPrice,int stock);
     
     public ProductInfo getProductById(int id);
  

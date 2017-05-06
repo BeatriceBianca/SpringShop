@@ -11,25 +11,9 @@ public class ProductInfo {
 	private long price;
 	private int status;
 	private int category;
-  private int id;
+	private int id;
 	private long minPrice;
 	private long maxPrice;
-	
-    public long getMinPrice() {
-		return minPrice;
-	}
-
-	public void setMinPrice(long minPrice) {
-		this.minPrice = minPrice;
-	}
-
-	public long getMaxPrice() {
-		return maxPrice;
-	}
-
-	public void setMaxPrice(long maxPrice) {
-		this.maxPrice = maxPrice;
-	}
 
 	private boolean newProduct=false;
  
@@ -51,10 +35,25 @@ public class ProductInfo {
         this.price = price;
         this.status = status;
         this.category = category;
-        this.id = id;
+        this.id=id;
     }
- 
-    public String getName() {
+    public long getMinPrice() {
+  		return minPrice;
+  	}
+
+  	public void setMinPrice(long minPrice) {
+  		this.minPrice = minPrice;
+  	}
+
+  	public long getMaxPrice() {
+  		return maxPrice;
+  	}
+
+  	public void setMaxPrice(long maxPrice) {
+  		this.maxPrice = maxPrice;
+  	}
+  	
+	public String getName() {
 		return name;
 	}
 

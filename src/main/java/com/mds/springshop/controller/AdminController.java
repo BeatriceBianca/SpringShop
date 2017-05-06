@@ -63,7 +63,7 @@ public class AdminController {
 		productDAO.setCategoryType(productInfo.getCategory());
 		productDAO.setPriceMin(productInfo.getMinPrice());
 		productDAO.setPriceMax(productInfo.getMaxPrice());
-		productDAO.setStatus(productInfo.getStatus());
+		productDAO.setStock(productInfo.getProductsLeftInStock());
 		return "redirect:/index";
 	}
 
@@ -75,7 +75,7 @@ public class AdminController {
 	  final int maxNavigationPage = 10;
 
 	  PaginationResult<ProductInfo> result = productDAO.queryProducts(page,maxResult, maxNavigationPage,//
-			  productDAO.getCategoryType(),productDAO.getPriceMin(),productDAO.getPriceMax(),productDAO.getStatus());
+			  productDAO.getCategoryType(),productDAO.getPriceMin(),productDAO.getPriceMax(),productDAO.getStock());
       model.addAttribute("paginationProducts", result);
       model.addAttribute("categoryType", productDAO.getCategoryType());
       ProductInfo productInfo=new ProductInfo();
