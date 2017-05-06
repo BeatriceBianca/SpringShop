@@ -91,7 +91,7 @@ public class Products implements Serializable {
 	public void setStatus(int status) {
 		this.status = status;
 	}
-	@Column(name = "descritpion")
+	@Column(name = "product_description")
 	public String getDescription() {
 		return description;
 	}
