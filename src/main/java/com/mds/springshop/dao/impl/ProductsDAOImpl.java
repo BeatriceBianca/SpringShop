@@ -78,9 +78,9 @@ public class ProductsDAOImpl implements ProductsDAO {
                     + Products.class.getName() + " p "; 
 //                    + " where p.status = "+status+" and p.categoryId = " + category;
     		if(status==10)
-              	sql+= " where p.status = 1 or p.status = 0";
+              	sql+= " where (p.status = 1 or p.status = 0) and p.categoryId= "+ category;
             else
-               	sql+= " where p.status = "+status;
+               	sql+= " where p.status = "+status+" and p.categoryId= "+ category; 
     		if(minPrice!=0) sql+=" and p.price >= "+minPrice;
     		if(maxPrice!=0) sql+=" and p.price <= "+maxPrice;
     	}
