@@ -60,9 +60,10 @@ public class AdminController {
 	@RequestMapping(value = { "/index" }, method = RequestMethod.POST)
 	public String critForm(Model model,@ModelAttribute("categoryForm")  ProductInfo productInfo,BindingResult result,final RedirectAttributes redirectAttributes)
 	{
-
-		if(productInfo.getCategory()!=5)
-			productDAO.setCategoryType(productInfo.getCategory());
+		productDAO.setCategoryType(productInfo.getCategory());
+		productDAO.setPriceMin(productInfo.getMinPrice());
+		productDAO.setPriceMax(productInfo.getMaxPrice());
+		productDAO.setStatus(productInfo.getStatus());
 		return "redirect:/index";
 	}
 
@@ -72,13 +73,12 @@ public class AdminController {
 
 	  final int maxResult = 5;
 	  final int maxNavigationPage = 10;
-	 
-	  PaginationResult<ProductInfo> result = productDAO.queryProducts(page, //
-	                maxResult, maxNavigationPage, productDAO.getCategoryType());
+
+	  PaginationResult<ProductInfo> result = productDAO.queryProducts(page,maxResult, maxNavigationPage,//
+			  productDAO.getCategoryType(),productDAO.getPriceMin(),productDAO.getPriceMax(),productDAO.getStatus());
       model.addAttribute("paginationProducts", result);
       model.addAttribute("categoryType", productDAO.getCategoryType());
       ProductInfo productInfo=new ProductInfo();
-      
       model.addAttribute("categoryForm",productInfo);
       return "index";
   }

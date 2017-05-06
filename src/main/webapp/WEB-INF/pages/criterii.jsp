@@ -15,15 +15,15 @@
 			
 		<div> Pret </div>
 			<div id = "pret">
-				<input id="pret-min" type="text"/>
+				<form:input id="pret-min" path="minPrice"/>
 				<span> - </span>
-				<input id="pret-max" type="text"/>
+				<form:input id="pret-max" path="maxPrice"/>
 			</div>
 		<br>
 			
 		<div> Disponibilitate </div>
-			<input type="radio" name="disp" value="all" checked> Toate<br>
-			<input type="radio" name="disp" value="disp"> In stoc 
+			<form:radiobutton path="status"  value="10" /> Toate<br>
+			<form:radiobutton path="status"  value="1"/> In stoc 
 		<br><br>
 			
 		<button id="criterii"> Submit </button>	

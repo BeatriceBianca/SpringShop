@@ -15,7 +15,7 @@ public class Products implements Serializable {
 	private int id;
 	private String name;
 	private int productsLeftInStock;
-	private int price;
+	private long price;
 	private int categoryId;
 	private int supplierId;
 	private int status;
@@ -49,11 +49,11 @@ public class Products implements Serializable {
 	}
 	
 	@Column(name = "price")
-	public int getPrice() {
+	public long getPrice() {
 		return price;
 	}
 	
-	public void setPrice(int price) {
+	public void setPrice(long price) {
 		this.price = price;
 	}
 	
