@@ -64,7 +64,7 @@ public class ProductsDAOImpl implements ProductsDAO {
     	String sql;
     	if (category == 5) {
     		sql = "Select new " + ProductInfo.class.getName() //
-                    + "(p.name, p.productsLeftInStock, p.price, p.status, p.categoryId) " + " from "//
+                    + "(p.name, p.productsLeftInStock, p.price, p.status, p.categoryId, p.id) " + " from "//
                     + Products.class.getName() + " p ";
             if(status==10)
             	sql+= " where p.status = 1 or p.status = 0";
@@ -74,7 +74,7 @@ public class ProductsDAOImpl implements ProductsDAO {
     		if(maxPrice!=0) sql+=" and p.price <= "+maxPrice;
     	} else {
     		sql = "Select new " + ProductInfo.class.getName() //
-                    + "(p.name, p.productsLeftInStock, p.price, p.status, p.categoryId) " + " from "//
+                    + "(p.name, p.productsLeftInStock, p.price, p.status, p.categoryId, p.id) " + " from "//
                     + Products.class.getName() + " p "; 
 //                    + " where p.status = "+status+" and p.categoryId = " + category;
     		if(status==10)
