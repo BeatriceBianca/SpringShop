@@ -19,8 +19,8 @@ public class Products implements Serializable {
 	private int id;
 	private String name;
 	private int productsLeftInStock;
-	private int price;
-	private Categories categoryId;
+	private long price;
+	private int categoryId;
 	private Users supplierId;
 	private int status;
 	private String description;
@@ -35,15 +35,14 @@ public class Products implements Serializable {
 		this.id = id;
 	}
 	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "CATEGORY_ID", nullable = false, //
-		foreignKey = @ForeignKey(name = "category_fk") )
-			public Categories getCategoryId() {
-				return categoryId;
-			}
-			public void setCategoryId(Categories categoryId) {
-				this.categoryId = categoryId;
-			}
+	@Column(name = "category_id")
+	public int getCategoryId() {
+		return categoryId;
+	}
+	
+	public void setCategoryId(int categoryId) {
+		this.categoryId = categoryId;
+	}
 	    
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "SUPPLIER_ID", nullable = false, //
