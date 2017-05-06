@@ -1,5 +1,4 @@
 # SpringShop
-#Author: Beatrice Bianca Luca
 
 Membrii echipa: Ciolacu Florentina, 
 			Dumitriu Adelina,
