@@ -4,7 +4,11 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ForeignKey;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -15,10 +19,11 @@ public class Products implements Serializable {
 	private int id;
 	private String name;
 	private int productsLeftInStock;
-	private long price;
-	private int categoryId;
-	private int supplierId;
+	private int price;
+	private Categories categoryId;
+	private Users supplierId;
 	private int status;
+	private String description;
 	
 	@Id
 	@Column(name = "product_id")
@@ -29,6 +34,27 @@ public class Products implements Serializable {
 	public void setId(int id) {
 		this.id = id;
 	}
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "CATEGORY_ID", nullable = false, //
+		foreignKey = @ForeignKey(name = "category_fk") )
+			public Categories getCategoryId() {
+				return categoryId;
+			}
+			public void setCategoryId(Categories categoryId) {
+				this.categoryId = categoryId;
+			}
+	    
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "SUPPLIER_ID", nullable = false, //
+		foreignKey = @ForeignKey(name = "products_user_fk") )
+		    public Users getSupplierId() {
+		        return supplierId;
+		    }
+		 
+		    public void setSupplierId(Users supplierId) {
+		        this.supplierId = supplierId;
+		    }
 	
 	@Column(name = "product_name")
 	public String getName() {
@@ -56,24 +82,6 @@ public class Products implements Serializable {
 	public void setPrice(long price) {
 		this.price = price;
 	}
-	
-	@Column(name = "category_id")
-	public int getCategoryId() {
-		return categoryId;
-	}
-	
-	public void setCategoryId(int categoryId) {
-		this.categoryId = categoryId;
-	}
-
-	@Column(name = "supplier_id")
-	public int getSupplierId() {
-		return supplierId;
-	}
-
-	public void setSupplierId(int supplierId) {
-		this.supplierId = supplierId;
-	}
 
 	@Column(name = "status")
 	public int getStatus() {
@@ -82,6 +90,14 @@ public class Products implements Serializable {
 
 	public void setStatus(int status) {
 		this.status = status;
+	}
+	@Column(name = "product_description")
+	public String getDescription() {
+		return description;
+	}
+	
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	
 }

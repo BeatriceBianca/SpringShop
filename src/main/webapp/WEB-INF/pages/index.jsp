@@ -2,6 +2,7 @@
     pageEncoding="ISO-8859-1"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -23,7 +24,15 @@
        <tr>
            <th>Nume produs</th>
            <th>Pret</th>
-           <th></th>
+           <security:authorize  access="hasAnyRole('BUYER')">
+           		<th></th>
+           </security:authorize>
+           <security:authorize  access="hasAnyRole('BUYER')">
+           		<th></th>
+           </security:authorize>
+           <security:authorize  access="hasAnyRole('MANAGER')">
+           		<th></th>
+           </security:authorize>
        </tr>
        <c:forEach items="${paginationProducts.list}" var="products">
            <tr>
@@ -31,9 +40,27 @@
 	           <td>
 	              ${products.price} lei
 	           </td>
-	           <td>
-	           		<button>Vezi detalii</button>
-	           </td>
+	           <security:authorize  access="hasAnyRole('BUYER')">
+		           <td>
+		           		<a href="./detaliiProdus/${products.id}">
+		           			<button>Vezi detalii</button>
+		           		</a>
+		           </td>
+	           </security:authorize>
+	           <security:authorize  access="hasAnyRole('BUYER')">
+		           <td>
+		           		<a href="./favorite">
+		           			<button>Adauga la favorite</button>
+		           		</a>
+		           </td>
+	           </security:authorize>
+	           <security:authorize  access="hasAnyRole('MANAGER')">
+		           <td>
+		           		<a href="./favorite">
+		           			<button>Editeaza produs</button>
+		           		</a>
+		           </td>
+	           </security:authorize>
            </tr>
 		</c:forEach>
    </table>
