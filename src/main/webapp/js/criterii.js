@@ -1,6 +1,6 @@
 window.onload = function(){
 	document.getElementById("criterii").onclick = function() {
-		if(document.getElementById("pret-max").value != ""){
+		if(document.getElementById("pret-max").value != 0){
 			if(document.getElementById("pret-min").value > document.getElementById("pret-max").value)
 				alert("Ai completat gresit pretul maxim!");
 		}
