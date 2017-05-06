@@ -22,18 +22,25 @@
 		<div>
 				<div id="detalii">
 					<h1 id="name">${product.name} </h1>
-				
-					<br>
+	
 					<c:if test="${product.productsLeftInStock == 0}">
-						<div id="stoc"> Stoc epuizat </div>
+						<div id="stoc"> [ Stoc epuizat ] </div>
 					</c:if>
 					
 					<c:if test="${product.productsLeftInStock > 0}">
-						<div id="stoc"> In stoc </div>
+						<div id="stoc"> [ In stoc ] </div>
 					</c:if>
+
+					<br><br>
+				
+					<div id="descriere"> ${product.description}</div>
+					
+					<div id="pret"> Pret: ${product.price} lei </div>
 				</div>
-				<div>
-					<div>Pret: ${product.price}</div>
+				
+				<div id="butoane">
+					<button> Adauga in cos </button>
+					<button> Adauga la favorite </button>
 				</div>
 		</div>
 	</div>
