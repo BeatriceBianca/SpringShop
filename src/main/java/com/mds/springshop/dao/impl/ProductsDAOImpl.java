@@ -90,7 +90,7 @@ public class ProductsDAOImpl implements ProductsDAO {
     	String sql;
     	
     	sql = "Select new " + ProductInfo.class.getName() //
-                + "(p.name, p.productsLeftInStock, p.price, p.status, p.categoryId, p.id) " + " from "//
+                + "(p.name, p.productsLeftInStock, p.price, p.status, p.categoryId, p.id, p.description) " + " from "//
                 + Products.class.getName() + " p " 
                 + " where p.id = " + id;
     	
@@ -129,7 +129,7 @@ public class ProductsDAOImpl implements ProductsDAO {
 		 product=this.findProductById(id);
 		
 		 product.setName(productInfo.getName());
-//		 product.setDescription(productInfo.getDescription);
+		 product.setDescription(productInfo.getDescription());
 		 product.setPrice(productInfo.getPrice());
 	 }
 

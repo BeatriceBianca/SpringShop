@@ -11,10 +11,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.mds.springshop.dao.ProductsDAO;
 import com.mds.springshop.model.ProductInfo;
+import com.mds.springshop.model.UsersInfo;
 
 @Controller
 public class ProductsController {
@@ -39,11 +41,10 @@ public class ProductsController {
   }
 	
 	@RequestMapping(value={"/editareProdus"},method=RequestMethod.GET)
-	public String updateProduct(Model model)
+	public String displayEditProduct(Model model)
 	{
-		System.out.println("/editare//////////");
 		ProductInfo productInfo=null;
-		System.out.println(productId);
+		
 		productInfo = productDAO.getProductById(productId);
 
 		model.addAttribute("saveProductForm", productInfo);
@@ -53,16 +54,38 @@ public class ProductsController {
 	
 	@RequestMapping(value = { "/editareProdus/{id}" }, method = RequestMethod.GET)
 	@Transactional(propagation = Propagation.NEVER)
-	public String saveUser(@PathVariable int id, Model model,
+//	public String editProduct(@PathVariable int id, Model model,
+//			@ModelAttribute("saveProductForm")  @Validated ProductInfo productInfo,BindingResult result,
+//			final RedirectAttributes redirectAttributes)
+	public String editProduct(@PathVariable int id, Model model)
+	{
+		
+		productId = id;
+//		model.addAttribute("saveProductForm", productInfo);
+		
+		return "redirect:http://localhost:8080/SpringShop/editareProdus";
+	}
+	
+	@RequestMapping(value={"/updateProduct"},method=RequestMethod.GET)
+	public String product(Model model)
+	{
+		ProductInfo productInfo = productDAO.getProductById(productId);
+		
+		model.addAttribute("saveProductForm",productInfo);
+		return "updateProduct";
+	}
+	
+	@RequestMapping(value = { "/updateProduct" }, method = RequestMethod.POST)
+	@Transactional(propagation = Propagation.NEVER)
+	public String updateProduct(Model model,
 			@ModelAttribute("saveProductForm")  @Validated ProductInfo productInfo,BindingResult result,
 			final RedirectAttributes redirectAttributes)
 	{
-		System.out.println("editare/id!!!!!!!!!!!!" + id);
-		productId = id;
-		System.out.println(productId);
-//		productDAO.updateProduct(productInfo);
 		
-		return "redirect:http://localhost:8080/SpringShop/editareProdus";
+		System.out.println("Update!!!!!!!!!!!!");
+		productDAO.updateProduct(productInfo);
+	    System.out.println(productInfo);
+		return "redirect:/";
 	}
 }
 

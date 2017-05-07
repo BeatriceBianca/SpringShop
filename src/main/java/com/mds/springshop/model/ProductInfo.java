@@ -1,6 +1,5 @@
 package com.mds.springshop.model;
 
-import com.mds.springshop.entity.Categories;
 import com.mds.springshop.entity.Products;
 
 
@@ -14,6 +13,7 @@ public class ProductInfo {
 	private int id;
 	private long minPrice;
 	private long maxPrice;
+	private String description;
 
 	private boolean newProduct=false;
  
@@ -27,8 +27,19 @@ public class ProductInfo {
         this.status = product.getStatus();
         this.category = product.getCategoryId();
         this.id = product.getId();
+        this.description = product.getDescription();
     }
  
+    public ProductInfo(String name, int productsLeftInStock, long price, int status, int category, int id, String description) {
+        this.name = name;
+        this.productsLeftInStock = productsLeftInStock;
+        this.price = price;
+        this.status = status;
+        this.category = category;
+        this.id=id;
+        this.description = description;
+    }
+    
     public ProductInfo(String name, int productsLeftInStock, long price, int status, int category, int id) {
         this.name = name;
         this.productsLeftInStock = productsLeftInStock;
@@ -37,6 +48,7 @@ public class ProductInfo {
         this.category = category;
         this.id=id;
     }
+    
     public long getMinPrice() {
   		return minPrice;
   	}
@@ -107,6 +119,14 @@ public class ProductInfo {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 }

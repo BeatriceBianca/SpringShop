@@ -38,6 +38,8 @@
 	
 						<br><br>
 						
+						<form:textarea path="description" id="m-descriere" value="${product.description}" />
+						
 						<br><br><br>
 						
 						<form:input path="price" id="m-pret" value="${product.price} lei"/>
@@ -46,7 +48,9 @@
 				
 				<div id="butoane">
 					<security:authorize  access="hasAnyRole('MANAGER')">
-						<input id="submit" type="submit" value="Submit" /> 
+						<a href="/updateProduct">
+							<input id="submit" type="submit" value="Submit" /> 
+						</a>
 					</security:authorize>
 				</div>
 		</div>
