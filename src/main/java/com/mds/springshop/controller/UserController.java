@@ -94,4 +94,10 @@ public class UserController {
 		productDAO.setCategoryType(5);
         return "profil";
     }
+	
+	@RequestMapping(value = { "/istoric" }, method = RequestMethod.GET)
+	public String getIstoricPage(Model model) {
+		return "istoric";
+	}
+	
 }
