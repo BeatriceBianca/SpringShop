@@ -37,7 +37,6 @@
 						</c:if>
 	
 						<br><br>
-					
 						
 						<br><br><br>
 						

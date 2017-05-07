@@ -7,7 +7,6 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<link href="styles/login.css" type="text/css" rel="stylesheet">
 	<link href="styles/all.css" type="text/css" rel="stylesheet">
-	<script src="js/criterii.js" type="text/javascript" ></script>
 	<script src="js/all.js" type="text/javascript" ></script>
 	<title>Spring Shop</title>
 </head>
@@ -28,18 +27,18 @@
 	           <table>
 	               <tr>
 	                   <td>Email *</td>
-	                   <td><input name="email" /></td>
+	                   <td><input id="email" name="email" /></td>
 	               </tr>
 	 
 	               <tr>
 	                   <td>Password *</td>
-	                   <td><input type="password" name="password" /></td>
+	                   <td><input id="pass" type="password" name="password" /></td>
 	               </tr>
 	 
 	               <tr>
 	                   <td>&nbsp;</td>
-	                   <td><input type="submit" value="Login" /> <input type="reset"
-	                       value="Reset" /></td>
+	                   <td><input id="login" type="submit" value="Login" /> 
+	                   <input id="reset" type="reset" value="Reset" /></td>
 	               </tr>
 	           </table>
       	   </form>
