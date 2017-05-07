@@ -7,7 +7,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<link href="styles/profile.css" type="text/css" rel="stylesheet">
+	<link href="styles/profil.css" type="text/css" rel="stylesheet">
 	<link href="styles/all.css" type="text/css" rel="stylesheet">
 	<script src="js/criterii.js" type="text/javascript" ></script>
 	<script src="js/all.js" type="text/javascript" ></script>
@@ -26,36 +26,36 @@
 				<div>
 					<div>Nume: ${user.lastName} </div>
 				
-					<br>
+					<br><br>
 					
 					<div>Prenume: ${user.firstName}</div>
 					
-					<br>
+					<br><br>
 					
 					<div>Email: ${user.email}</div>
-					<br>
+					<br><br>
 						
-					<div>Parola: ${user.password}</div>
-					<br>
-				</div>
-			
-				<div>
+					<div>Parola: 
+					<input type = "password" value = ${user.password}/>
+					</div>
+					<br><br>
+				
 					<div>Telefon: ${user.phone}</div>
 					
-					<br>
+					<br><br>
 					
 					<div>Adresa: ${user.address}</div>
 					
-					<br>
+					<br><br>
 					
 					<div>Tip cont: ${user.role}</div>
 		
 			
 				</div>
 		</div>
-		<br>
-		<input type="submit" value="Submit" /> 
-		<input type="reset" value="Reset" />
+		<br><br>
+		<input type="reset" value="Schimbare parola" /> 
+		<input type="reset" value="Editare profil" />
 	</div>
 </body>
 </html>
