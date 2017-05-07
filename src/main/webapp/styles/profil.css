@@ -5,6 +5,10 @@
 	width: 50%;
 }
 
+#profile-container>h1 {
+	text-align: center;
+}
+
 #profile-container>div {
 	display: flex;
 }
