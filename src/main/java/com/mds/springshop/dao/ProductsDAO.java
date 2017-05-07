@@ -1,5 +1,6 @@
 package com.mds.springshop.dao;
 
+import com.mds.springshop.entity.Products;
 import com.mds.springshop.model.PaginationResult;
 import com.mds.springshop.model.ProductInfo;
  
@@ -18,5 +19,9 @@ public interface ProductsDAO {
             int maxResult, int maxNavigationPage, int category,long minPrice,long maxPrice,int stock);
     
     public ProductInfo getProductById(int id);
+    
+    public Products findProductById(int id);
+    
+    public void updateProduct(ProductInfo productInfo);
  
 }

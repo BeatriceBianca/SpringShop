@@ -1,9 +1,5 @@
 package com.mds.springshop.dao.impl;
 
-import java.util.List;
-
-import javax.persistence.TypedQuery;
-
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -106,4 +102,35 @@ public class ProductsDAOImpl implements ProductsDAO {
     	
     	return product;
     }
+    
+    public Products findProductById(int id) {
+    	
+    	String sql;
+    	
+    	sql = "Select new " + ProductInfo.class.getName() //
+                + "(p.name, p.productsLeftInStock, p.price, p.status, p.categoryId, p.id) " + " from "//
+                + Products.class.getName() + " p " 
+                + " where p.id = " + id;
+    	
+    	Session session = sessionFactory.getCurrentSession();
+   	 
+    	Query query = session.createQuery(sql);
+    	
+    	Products product = (Products) query.list().get(0);
+    	
+    	return product;
+    }
+    
+    public void updateProduct(ProductInfo productInfo)
+	 {
+		 int id=productInfo.getId();
+		 Products product=null;
+		 
+		 product=this.findProductById(id);
+		
+		 product.setName(productInfo.getName());
+//		 product.setDescription(productInfo.getDescription);
+		 product.setPrice(productInfo.getPrice());
+	 }
+
 }
