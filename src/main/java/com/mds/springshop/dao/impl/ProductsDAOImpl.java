@@ -121,16 +121,30 @@ public class ProductsDAOImpl implements ProductsDAO {
     	return product;
     }
     
-    public void updateProduct(ProductInfo productInfo)
+    public void updateProduct(int id, ProductInfo productInfo)
 	 {
-		 int id=productInfo.getId();
-		 Products product=null;
+		 String sql = "update Products ";
+		 if (productInfo.getName() != "" ) {
+			 sql += "set product_name = '" + productInfo.getName() + "'";
+			 if (productInfo.getDescription() != "") {
+				 sql += ", description = '" + productInfo.getDescription() + "'";
+			 }
+			 if (productInfo.getPrice() != 0) {
+			 }
+		 } else {
+			 if (productInfo.getDescription() != "") {
+				 }
+			 } else {
+				 }
+			 }
+		 }
+
 		 
-		 product=this.findProductById(id);
-		
-		 product.setName(productInfo.getName());
-		 product.setDescription(productInfo.getDescription());
-		 product.setPrice(productInfo.getPrice());
+	 	 sql += " where product_id = " + id;
+		 
+		 Session session = sessionFactory.getCurrentSession();
+		 Query query = session.createQuery(sql);
+	   	 query.executeUpdate();
 	 }
 
 }

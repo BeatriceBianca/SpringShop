@@ -22,6 +22,6 @@ public interface ProductsDAO {
     
     public Products findProductById(int id);
     
-    public void updateProduct(ProductInfo productInfo);
+    public void updateProduct(int id, ProductInfo productInfo);
  
 }

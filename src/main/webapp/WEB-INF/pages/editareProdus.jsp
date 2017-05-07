@@ -9,6 +9,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<link href="styles/detaliiProdus.css" type="text/css" rel="stylesheet">
 	<link href="styles/all.css" type="text/css" rel="stylesheet">
+	<script src="js/editare.js" type="text/javascript" ></script>
 	<title>Spring Shop</title>
 </head>
 
@@ -26,7 +27,8 @@
 					<!--  MANAGER  -->
 					
 					<security:authorize  access="hasAnyRole('MANAGER')">
-						<form:input path="name" id="m-name" value="${product.name}"/>
+						<div class="m-name"> ${product.name} </div>
+						<form:input path="name" class="m-name" id="m-m-name" />
 		
 						<c:if test="${product.productsLeftInStock == 0}">
 							<div id="stoc"> [ Stoc epuizat ] </div>
@@ -38,19 +40,18 @@
 	
 						<br><br>
 						
-						<form:textarea path="description" id="m-descriere" value="${product.description}" />
+						<span class="m-descriere"> Descriere </span><form:textarea path="description" id="m-m-descriere" class="m-descriere" />
 						
 						<br><br><br>
 						
-						<form:input path="price" id="m-pret" value="${product.price} lei"/>
+						<div class="m-pret"> Pret: ${product.price} lei </div>
+						<form:input path="price" class="m-pret" id="m-m-pret"/>
 					</security:authorize>
 				</div>
 				
 				<div id="butoane">
 					<security:authorize  access="hasAnyRole('MANAGER')">
-						<a href="/updateProduct">
-							<input id="submit" type="submit" value="Submit" /> 
-						</a>
+						<input id="submit" type="submit" value="Submit" /> 
 					</security:authorize>
 				</div>
 		</div>
