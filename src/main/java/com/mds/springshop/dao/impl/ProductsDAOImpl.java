@@ -130,11 +130,17 @@ public class ProductsDAOImpl implements ProductsDAO {
 				 sql += ", description = '" + productInfo.getDescription() + "'";
 			 }
 			 if (productInfo.getPrice() != 0) {
+				 sql += ", price = " + productInfo.getPrice();
 			 }
 		 } else {
 			 if (productInfo.getDescription() != "") {
+				 sql += "set description = '" + productInfo.getDescription() + "'";
+				 if (productInfo.getPrice() != 0) {
+					 sql += ", price = " + productInfo.getPrice();
 				 }
 			 } else {
+				 if (productInfo.getPrice() != 0) {
+					 sql += "set price = " + productInfo.getPrice();
 				 }
 			 }
 		 }
