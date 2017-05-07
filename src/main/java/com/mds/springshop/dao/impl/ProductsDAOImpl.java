@@ -23,18 +23,18 @@ public class ProductsDAOImpl implements ProductsDAO {
 	private volatile int categoryType = 5;
 	private long priceMin=0;
 	private long priceMax=0;
-	private int status;
+	private int Stock;
+	
 	@Autowired
     private SessionFactory sessionFactory;
 	
-	public int getStatus() {
-		return status;
+	public int getStock() {
+		return Stock;
 	}
 
-	public void setStatus(int status) {
-		this.status = status;
+	public void setStock(int stock) {
+		Stock = stock;
 	}
-
 	public long getPriceMin() {
 		return priceMin;
 	}
@@ -59,30 +59,27 @@ public class ProductsDAOImpl implements ProductsDAO {
     }
 
     public PaginationResult<ProductInfo> queryProducts(int page, int maxResult, int maxNavigationPage,//
-    		int category,long minPrice,long maxPrice,int status) {
+    		int category,long minPrice,long maxPrice,int stock) {
 
     	String sql;
     	if (category == 5) {
     		sql = "Select new " + ProductInfo.class.getName() //
                     + "(p.name, p.productsLeftInStock, p.price, p.status, p.categoryId, p.id) " + " from "//
-                    + Products.class.getName() + " p ";
-            if(status==10)
-            	sql+= " where p.status = 1 or p.status = 0";
-            else
-            	sql+= " where p.status = "+status;
+                    + Products.class.getName() + " p "
+                    + " where p.status = 1 ";
     		if(minPrice!=0) sql+=" and p.price >= "+minPrice;
     		if(maxPrice!=0) sql+=" and p.price <= "+maxPrice;
+    		if(stock!=0) sql+=" and p.productsLeftInStock > 0 ";
+    		else sql+=" and p.productsLeftInStock >= 0 ";
     	} else {
     		sql = "Select new " + ProductInfo.class.getName() //
                     + "(p.name, p.productsLeftInStock, p.price, p.status, p.categoryId, p.id) " + " from "//
-                    + Products.class.getName() + " p "; 
-//                    + " where p.status = "+status+" and p.categoryId = " + category;
-    		if(status==10)
-              	sql+= " where (p.status = 1 or p.status = 0) and p.categoryId= "+ category;
-            else
-               	sql+= " where p.status = "+status+" and p.categoryId= "+ category; 
+                    + Products.class.getName() + " p "
+                    + " where p.status = 1 and p.categoryId = " + category; 
     		if(minPrice!=0) sql+=" and p.price >= "+minPrice;
     		if(maxPrice!=0) sql+=" and p.price <= "+maxPrice;
+    		if(stock!=0) sql+=" and p.productsLeftInStock > 0 ";
+    		else sql+=" and p.productsLeftInStock >= 0 ";
     	}
     	
     	Session session = sessionFactory.getCurrentSession();
