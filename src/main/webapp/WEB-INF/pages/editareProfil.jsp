@@ -7,21 +7,22 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<link href="styles/profil.css" type="text/css" rel="stylesheet">
+	<link href="styles/editareProfil.css" type="text/css" rel="stylesheet">
 	<link href="styles/all.css" type="text/css" rel="stylesheet">
 	<script src="js/criterii.js" type="text/javascript" ></script>
 	<script src="js/all.js" type="text/javascript" ></script>
 	<title>Spring Shop</title>
 </head>
 
-<body class="profile-page">
+<body class="editProfile-page">
 
 	<jsp:include page="header.jsp" />
 	
 	<jsp:include page="menu.jsp" />
 	
-	<div id = "profile-container">
-			<h1>Profil</h1>
+	<!--<form:form modelAttribute="registrationForm" method="POST">-->
+	<div id = "editProfile-container">
+			<h1>Editare Profil</h1>
 			<div>
 				<div>
 					<div>Nume: ${user.lastName} </div>
@@ -36,15 +37,19 @@
 					<br><br>
 						
 					<div>Parola: 
-					<input type = "password" value = ${user.password}/>
+					<input path = "password" type = "password" value = ${user.password}/>
 					</div>
 					<br><br>
 				
-					<div>Telefon: ${user.phone}</div>
+					<div>Telefon: 
+					<input path = "phone" value = ${user.phone}/>
+					</div>
 					
 					<br><br>
 					
-					<div>Adresa: ${user.address}</div>
+					<div>Adresa: 
+					<input path = "address" value = ${user.address}/>
+					</div>
 					
 					<br><br>
 					
@@ -54,11 +59,8 @@
 				</div>
 		</div>
 		<br><br>
-		<input type="reset" value="Schimbare parola" /> 
-		<a href="./editareProfil">
-		     <button>Editeaza profil</button>
-		</a>
-		
+		<input type="submit" value="Submit" /> 
 	</div>
+	<!--</form:form>-->
 </body>
 </html>

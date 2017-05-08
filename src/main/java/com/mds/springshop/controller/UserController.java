@@ -101,4 +101,19 @@ public class UserController {
 		return "istoric";
 	}
 	
+	@RequestMapping(value = { "/editareProfil" }, method = RequestMethod.GET)
+	public String getEditProfilePage(Model model, @ModelAttribute("registrationForm")  @Validated UsersInfo userInfo,BindingResult result,final RedirectAttributes redirectAttributes) {
+		
+		
+		UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        
+		Users user;
+		user = usersDAO.findUserByEmail(userDetails.getUsername());
+		model.addAttribute("user", user);
+		
+		productDAO.setCategoryType(5);
+		model.addAttribute("registrationForm",user);
+		return "editareProfil";
+	}
+	
 }

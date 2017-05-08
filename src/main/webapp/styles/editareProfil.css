@@ -1,0 +1,48 @@
+#editProfile-container {
+	margin-left: 25%;
+	margin-top: 10.5%;
+	margin-right: 20%;
+	width: 50%;
+}
+
+#editProfile-container>h1 {
+	text-align: center;
+}
+
+#editProfile-container>div {
+	display: flex;
+}
+
+#editProfile-container>div>div {
+	width: 50%;
+}
+
+#editProfile-container>div>div:nth-child(2) {
+	width: 30%;
+}
+
+#editProfile-container>div>div:nth-child(1) {
+	width: 70%;
+}
+
+#editProfile-container input {
+	margin-bottom: 10px;
+	border-radius: 4px;
+}
+
+#editProfile-button {
+	border-radius: 4px;
+	width: 30%;
+	height: 25px;
+	display: block;
+	margin: auto;
+}
+
+#editProfile-container select {
+	border-radius: 4px;
+	height: 25px;
+}
+
+h1 {
+	margin-left: 25%;
+}
