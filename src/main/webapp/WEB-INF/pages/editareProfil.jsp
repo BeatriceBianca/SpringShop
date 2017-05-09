@@ -20,44 +20,45 @@
 	
 	<jsp:include page="menu.jsp" />
 	
-	<!--<form:form modelAttribute="registrationForm" method="POST">-->
+	<form:form modelAttribute="editForm" method="POST" >
 	<div id = "editProfile-container">
 			<h1>Editare Profil</h1>
 			<div>
 				<div>
 					<div>Nume: 
-					<input path = "lastName" value  = ${user.lastName} />
+					<form:input path="lastName"  />
+               		
 					</div>
 				
 					<br><br>
 					
 					<div>Prenume: 
-					<input path = "firstName" value = ${user.firstName} />
+					<form:input path = "firstName"  />
 					</div>
 					
 					<br><br>
 						
 					<div>Parola: 
-					<input path = "password" type = "password" value = ${user.password} />
+					<form:input path = "password" type = "password"  />
 					</div>
 					<br><br>
 				
 					<div>Telefon: 
-					<input path = "phone" value = ${user.phone} />
+					<form:input path = "phone"  />
 					</div>
 					
 					<br><br>
 					
 					<div>Adresa: 
-					<input path = "address" value = ${user.address} />
+					<form:input path = "address"  />
 					</div>
-					
+					<form:hidden path="email" />
 			
 				</div>
 		</div>
 		<br><br>
 		<input type="submit" value="Submit" /> 
 	</div>
-	<!--</form:form>-->
+	</form:form>
 </body>
 </html>

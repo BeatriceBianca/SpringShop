@@ -55,4 +55,18 @@ public class UsersDAOImpl implements UsersDAO {
 		 }
 		 this.sessionFactory.getCurrentSession().flush();
 	 }
+	 public void updateUser(UsersInfo userInfo){
+		 
+		 String email=userInfo.getEmail();
+		 Users user=this.findUserByEmail(email);
+		 user.setLastName(userInfo.getLastName());
+		 user.setFirstName(userInfo.getFirstName());
+		 user.setPassword(userInfo.getPassword());
+		 user.setPhone(userInfo.getPhone());
+		 user.setAddress(userInfo.getAddress());
+//		 this.sessionFactory.getCurrentSession().saveOrUpdate(userInfo);
+		 
+		 this.sessionFactory.getCurrentSession().update(user);
+		 this.sessionFactory.getCurrentSession().flush();
+	 }
 }
