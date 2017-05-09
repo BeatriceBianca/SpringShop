@@ -71,7 +71,7 @@ public class AdminController {
 	public String listProductHandler(Model model,
           @RequestParam(value = "page", defaultValue = "1") int page) {
 
-	  final int maxResult = 5;
+	  final int maxResult = 4;
 	  final int maxNavigationPage = 10;
 
 	  PaginationResult<ProductInfo> result = productDAO.queryProducts(page,maxResult, maxNavigationPage,//
