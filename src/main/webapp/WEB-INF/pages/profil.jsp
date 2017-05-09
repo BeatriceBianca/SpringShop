@@ -34,27 +34,16 @@
 					
 					<div>Email: ${user.email}</div>
 					<br><br>
-						
-					<div>Parola: 
-					<input type = "password" value = ${user.password}/>
-					</div>
-					<br><br>
 				
 					<div>Telefon: ${user.phone}</div>
 					
 					<br><br>
 					
 					<div>Adresa: ${user.address}</div>
-					
-					<br><br>
-					
-					<div>Tip cont: ${user.role}</div>
-		
 			
 				</div>
 		</div>
-		<br><br>
-		<input type="reset" value="Schimbare parola" /> 
+		<br><br> 
 		<a href="./editareProfil">
 		     <button>Editeaza profil</button>
 		</a>

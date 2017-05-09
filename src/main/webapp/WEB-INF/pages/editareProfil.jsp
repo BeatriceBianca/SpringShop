@@ -25,36 +25,33 @@
 			<h1>Editare Profil</h1>
 			<div>
 				<div>
-					<div>Nume: ${user.lastName} </div>
+					<div>Nume: 
+					<input path = "lastName" value  = ${user.lastName} />
+					</div>
 				
 					<br><br>
 					
-					<div>Prenume: ${user.firstName}</div>
+					<div>Prenume: 
+					<input path = "firstName" value = ${user.firstName} />
+					</div>
 					
-					<br><br>
-					
-					<div>Email: ${user.email}</div>
 					<br><br>
 						
 					<div>Parola: 
-					<input path = "password" type = "password" value = ${user.password}/>
+					<input path = "password" type = "password" value = ${user.password} />
 					</div>
 					<br><br>
 				
 					<div>Telefon: 
-					<input path = "phone" value = ${user.phone}/>
+					<input path = "phone" value = ${user.phone} />
 					</div>
 					
 					<br><br>
 					
 					<div>Adresa: 
-					<input path = "address" value = ${user.address}/>
+					<input path = "address" value = ${user.address} />
 					</div>
 					
-					<br><br>
-					
-					<div>Tip cont: ${user.role}</div>
-		
 			
 				</div>
 		</div>
