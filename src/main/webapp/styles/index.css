@@ -2,18 +2,25 @@ table {
 	width: 60%;
 	margin-top: 124px;
 	margin-left: 30%;
+	background-color: rgba(255, 255, 255, 0.3);
+	border: dashed 0.1em #000000;
 }
 
 tr th{
-	border-bottom: 2px solid black;
+	border-bottom: dashed 0.1em #000000;
 	width: 25%;
+	padding: 3%;
+}
+
+tr:not(:last-child) td {
+	border-bottom: dashed 0.1em #000000;
 }
 
 tr td {
 	text-align: center;
 	height: 40px;
-	border-bottom: 1px solid black;
 	padding: 10px;
+	padding: 3%;
 }
 
 .page-navigator {
