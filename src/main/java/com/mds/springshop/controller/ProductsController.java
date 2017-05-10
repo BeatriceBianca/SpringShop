@@ -41,7 +41,6 @@ public class ProductsController {
 	@RequestMapping(value={"/editareProdus"},method=RequestMethod.GET)
 	public String updateProduct(Model model)
 	{
-		System.out.println("/editare//////////");
 		ProductInfo productInfo=null;
 		System.out.println(productId);
 		productInfo = productDAO.getProductById(productId);
@@ -57,10 +56,8 @@ public class ProductsController {
 			@ModelAttribute("saveProductForm")  @Validated ProductInfo productInfo,BindingResult result,
 			final RedirectAttributes redirectAttributes)
 	{
-		System.out.println("editare/id!!!!!!!!!!!!" + id);
 		productId = id;
 		System.out.println(productId);
-//		productDAO.updateProduct(productInfo);
 		
 		return "redirect:http://localhost:8080/SpringShop/editareProdus";
 	}
