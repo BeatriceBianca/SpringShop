@@ -48,7 +48,9 @@ public class FavoritesController {
 		ArrayList<FavoritesInfo> favorite = new ArrayList<FavoritesInfo>();
 		
 		ArrayList<ProductInfo> listOfProducts = productDAO.getAllProducts();
+		ArrayList<FavoritesInfo> listOfFavorites = favoriteDAO.getFavoritesByUser(user.getId());
 		
+		System.out.println(listOfProducts.size() + "!!!!!!!!!!!!! " + listOfFavorites.size());
 		
 //		for( int i = 0; i < listOfFavorites.size(); i++ ){
 //			for( int j = 0; j < listOfProducts.size(); j++ ) {
