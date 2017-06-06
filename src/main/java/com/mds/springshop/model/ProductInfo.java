@@ -1,9 +1,6 @@
 package com.mds.springshop.model;
 
-import com.mds.springshop.entity.Categories;
 import com.mds.springshop.entity.Products;
-
-
  
 public class ProductInfo {
 	private String name;

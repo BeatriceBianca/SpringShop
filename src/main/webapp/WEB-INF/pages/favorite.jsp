@@ -20,9 +20,9 @@
            <th>Nume produs</th>
            <th>Pret</th>
        </tr>
-       <c:forEach items="${order}">
+       <c:forEach items="${paginationFavorites.list}" var="favorites">
            <tr>
-	           <td>${order.productId.getProductName()}</td>
+	           <td></td>
 	           <td>
 	              <fmt:formatNumber value="${order.productId.getPrice()}" type="currency"/>
 	           </td>
