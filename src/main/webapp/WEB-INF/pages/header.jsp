@@ -26,7 +26,7 @@
 	            </div>
 	            <security:authorize  access="hasAnyRole('BUYER')">
 		            <div class="navbar-item">
-		                <a href="${pageContext.request.contextPath}/cosCurent" id="cos-curent"> Cos curent </a>
+		                <a href="${pageContext.request.contextPath}/Cos" id="cos-curent"> Cos curent </a>
 		            </div>
 		            <div class="navbar-item">
 		                <a href="${pageContext.request.contextPath}/istoric" id="istoric"> Istoric comenzi </a>
