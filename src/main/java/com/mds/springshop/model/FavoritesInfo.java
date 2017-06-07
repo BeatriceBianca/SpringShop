@@ -11,8 +11,8 @@ public class FavoritesInfo {
 	}
 	
 	public FavoritesInfo(Favorites fav){
-		productId = fav.getProduct();
-		userId = fav.getUser();
+		productId = fav.getProductId();
+		userId = fav.getUserId();
 	}
 	
 	public FavoritesInfo (int productId, int userId) {

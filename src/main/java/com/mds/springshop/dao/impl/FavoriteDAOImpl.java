@@ -32,8 +32,8 @@ public class FavoriteDAOImpl implements FavoriteDAO{
 		
 		Favorites fav = new Favorites();
 		
-		fav.setProduct(favoriteId);
-		fav.setUser(userId);
+		fav.setProductId(favoriteId);
+		fav.setUserId(userId);
 		
 		this.sessionFactory.getCurrentSession().persist(fav);
 		this.sessionFactory.getCurrentSession().flush();
