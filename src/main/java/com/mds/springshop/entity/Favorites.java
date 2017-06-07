@@ -38,21 +38,22 @@ public class Favorites implements Serializable {
 	}
 	
 	@Column(name = "product_id")
-	public int getProduct() {
+	public int getProductId() {
 		return productId;
 	}
-	
-	public void setProduct(int product) {
-		this.productId = product;
+
+	public void setProductId(int productId) {
+		this.productId = productId;
 	}
-	
 	@Column(name = "user_id")
-	public int getUser() {
+	public int getUserId() {
 		return userId;
 	}
-	
-	public void setUser(int user) {
-		this.userId = user;
+
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
+
+
 	
 }
