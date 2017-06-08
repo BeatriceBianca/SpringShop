@@ -24,8 +24,6 @@ import com.mds.springshop.model.ProductInfo;
 @Controller
 public class FavoritesController {
 	
-	private int favoriteId;
-	
 	@Autowired
 	private FavoriteDAO favoriteDAO;
 	
@@ -43,7 +41,6 @@ public class FavoritesController {
 		UserDetails currentUser = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		Users user;
 		user = userDAO.findUserByEmail(currentUser.getUsername());
-		favoriteDAO.addFavorite(favoriteId, user.getId());
 		
 		ArrayList<ProductInfo> favorite = new ArrayList<ProductInfo>();
 		
@@ -52,8 +49,8 @@ public class FavoritesController {
 		
 		for( int i = 0; i < listOfFavorites.size(); i++ ){
 			for( int j = 0; j < listOfProducts.size(); j++ ) {
-				if ( listOfFavorites.get(i).getProductId() == listOfProducts.get(i).getId()) {
-					favorite.add(listOfProducts.get(i));
+				if ( listOfFavorites.get(i).getProductId() == listOfProducts.get(j).getId()) {
+					favorite.add(listOfProducts.get(j));
 				}
 			}
 		}
@@ -66,7 +63,10 @@ public class FavoritesController {
 	@RequestMapping(value =  "favorite/{id}", method=RequestMethod.GET)
 	public String getProductDetailsById(Model model, @PathVariable int id) {
 
-	  favoriteId = id;
+	  UserDetails currentUser = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+	  Users user;
+	  user = userDAO.findUserByEmail(currentUser.getUsername());
+	  favoriteDAO.addFavorite(id, user.getId());
       return "redirect:http://localhost:8080/SpringShop/favorite";
   }
 	

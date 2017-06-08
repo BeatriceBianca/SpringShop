@@ -48,13 +48,11 @@ public class FavoriteDAOImpl implements FavoriteDAO{
 	                + Favorites.class.getName() + " f " 
 	                + " where f.userId = " + userId;
 
-	    	System.out.print(sql);
 	    	Session session = sessionFactory.getCurrentSession();
 	   	 
 	    	Query query = session.createQuery(sql);
 	    	
 	    	ArrayList<FavoritesInfo> product = (ArrayList<FavoritesInfo>) query.list();
-	    	
 	    	return product;
 	    }
 }
