@@ -7,7 +7,6 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<link href="styles/cosCurent.css" type="text/css" rel="stylesheet">
 	<link href="styles/all.css" type="text/css" rel="stylesheet">
-	<script src="js/criterii.js" type="text/javascript" ></script>
 	<title>Spring Shop</title>
 </head>
 <body class="cosCurent-page">
@@ -49,16 +48,11 @@
        </c:forEach>
    </table>
    
-   <div id="total">
-   		<div> Numar produse:${fn:length(cartProducts.list)}</div>
-   		<div> Pret total: "${TotalValue }"</div>
-   		<button> Comanda </button>
-   </div>
    <c:if test="${cartProducts.totalPages > 1}">
        <div class="page-navigator">
           <c:forEach items="${cartProducts.navigationPages}" var = "page">
               <c:if test="${page != -1 }">
-                <a href="index?page=${page}" class="nav-item">${page}</a>
+                <a href="Cos?page=${page}" class="nav-item">${page}</a>
               </c:if>
               <c:if test="${page == -1 }">
                 <span class="nav-item"> ... </span>
@@ -66,6 +60,12 @@
           </c:forEach>
        </div>
    </c:if>
+   
+   <div id="total">
+   		<div> Numar produse:${fn:length(cartProducts.list)}</div>
+   		<div> Pret total: ${TotalValue } lei</div>
+   		<button> Comanda </button>
+   </div>
    
 </body>
 </html>
