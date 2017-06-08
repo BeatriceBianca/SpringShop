@@ -64,8 +64,6 @@ public class UsersDAOImpl implements UsersDAO {
 		 user.setPassword(userInfo.getPassword());
 		 user.setPhone(userInfo.getPhone());
 		 user.setAddress(userInfo.getAddress());
-//		 this.sessionFactory.getCurrentSession().saveOrUpdate(userInfo);
-		 
 		 this.sessionFactory.getCurrentSession().update(user);
 		 this.sessionFactory.getCurrentSession().flush();
 	 }
