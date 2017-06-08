@@ -29,9 +29,6 @@
 		                <a href="${pageContext.request.contextPath}/cosCurent" id="cos-curent"> Cos curent </a>
 		            </div>
 		            <div class="navbar-item">
-		                <a href="${pageContext.request.contextPath}/istoric" id="istoric"> Istoric comenzi </a>
-		            </div>
-		            <div class="navbar-item">
 		                <a href="${pageContext.request.contextPath}/favorite" id="favorite"> Favorite </a>
 		            </div>
 	            </security:authorize>
@@ -39,14 +36,8 @@
 		            <div class="navbar-item">
 		                <a href="${pageContext.request.contextPath}/propunereOferta" id="propunereOferta"> Propune oferta </a>
 		            </div>
-		            <div class="navbar-item">
-		                <a href="${pageContext.request.contextPath}/istoricOferte" id="istoricOferte"> Istoric oferte </a>
-		            </div>
 	            </security:authorize>
 	            <security:authorize  access="hasAnyRole('MANAGER')">
-		            <div class="navbar-item">
-		                <a href="${pageContext.request.contextPath}/produse" id="produse"> Produse </a>
-		            </div>
 		            <div class="navbar-item">
 		                <a href="${pageContext.request.contextPath}/oferte" id="oferte"> Oferte </a>
 		            </div>
