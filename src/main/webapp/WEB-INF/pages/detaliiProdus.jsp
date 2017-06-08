@@ -35,11 +35,7 @@
 	
 						<br><br>
 					
-						<div id="descriere"> Afisajul aproape fara margini maximizeaza spatiul de ecran, 
-						înghesuind un afisaj de 15,6 inchi, într-un laptop mai aproape dimensiunea unei 14 inchi, 
-						datorita unui cadru are o grosime de numai 5,7 mm. 
-						Design unic: având o înaltime de numai 11 – 17 mm si o greutate minima de aproape 1,8 kg cu unitate SSD, XPS
-	 					15 este cel mai usor laptop de 38,1 cm (15 inchi) înalt performant din lume. </div>
+						<div id="descriere"> ${product.description} </div>
 						
 						<div id="pret"> Pret: ${product.price} lei </div>
 					</security:authorize>
