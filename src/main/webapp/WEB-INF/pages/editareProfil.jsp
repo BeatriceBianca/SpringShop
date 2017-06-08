@@ -7,47 +7,58 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<link href="styles/profil.css" type="text/css" rel="stylesheet">
+	<link href="styles/editareProfil.css" type="text/css" rel="stylesheet">
 	<link href="styles/all.css" type="text/css" rel="stylesheet">
 	<script src="js/criterii.js" type="text/javascript" ></script>
 	<script src="js/all.js" type="text/javascript" ></script>
 	<title>Spring Shop</title>
 </head>
 
-<body class="profile-page">
+<body class="editProfile-page">
 
 	<jsp:include page="header.jsp" />
 	
 	<jsp:include page="menu.jsp" />
 	
-	<div id = "profile-container">
-			<h1>Profil</h1>
+	<form:form modelAttribute="editForm" method="POST" >
+	<div id = "editProfile-container">
+			<h1>Editare Profil</h1>
 			<div>
 				<div>
-					<div>Nume: ${user.lastName} </div>
+					<div>Nume: 
+					<form:input path="lastName"  />
+               		
+					</div>
 				
 					<br><br>
 					
-					<div>Prenume: ${user.firstName}</div>
+					<div>Prenume: 
+					<form:input path = "firstName"  />
+					</div>
 					
 					<br><br>
-					
-					<div>Email: ${user.email}</div>
+						
+					<div>Parola: 
+					<form:input path = "password" type = "password"  />
+					</div>
 					<br><br>
 				
-					<div>Telefon: ${user.phone}</div>
+					<div>Telefon: 
+					<form:input path = "phone"  />
+					</div>
 					
 					<br><br>
 					
-					<div>Adresa: ${user.address}</div>
+					<div>Adresa: 
+					<form:input path = "address"  />
+					</div>
+					<form:hidden path="email" />
 			
 				</div>
 		</div>
-		<br><br> 
-		<a href="./editareProfil">
-		     <button>Editeaza profil</button>
-		</a>
-		
+		<br><br>
+		<input type="submit" value="Submit" /> 
 	</div>
+	</form:form>
 </body>
 </html>

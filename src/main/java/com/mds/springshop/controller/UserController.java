@@ -100,5 +100,37 @@ public class UserController {
 	public String getIstoricPage(Model model) {
 		return "istoric";
 	}
-	
+	@RequestMapping(value = { "/editareProfil" }, method = RequestMethod.GET)
+	public String getEditProfilePage(Model model){
+		UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		UsersInfo userInfo=null;
+			userInfo=usersDAO.findUserInfo(userDetails.getUsername());
+		model.addAttribute("editForm",userInfo);
+		
+		Users user;
+		user = usersDAO.findUserByEmail(userDetails.getUsername());
+		model.addAttribute("user", user);
+		
+		return "editareProfil";
+	}
+	@RequestMapping(value = { "/editareProfil" }, method = RequestMethod.POST)
+	@Transactional(propagation = Propagation.NEVER)
+	public String postEditProfilePage(Model model,@ModelAttribute("editForm")UsersInfo userInfo,BindingResult result,final RedirectAttributes redirectAttributes)
+	{
+		System.out.println("USERSDAO With Email "+userInfo.getEmail());
+		if (result.hasErrors()) {
+            return "editareProfil";
+		}
+		try{
+			
+			userDAO.updateUser(userInfo);
+		}
+		catch(Exception e)
+		{
+			String message=e.getMessage();
+			model.addAttribute("message", message);
+			return "editareProfil";
+		}
+		return "redirect:/";
+	}
 }
