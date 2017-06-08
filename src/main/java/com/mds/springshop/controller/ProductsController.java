@@ -11,9 +11,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.mds.springshop.dao.ProductsDAO;
+import com.mds.springshop.model.CosInfo;
+import com.mds.springshop.model.PaginationResult;
 import com.mds.springshop.model.ProductInfo;
 
 @Controller
@@ -66,7 +69,30 @@ public class ProductsController {
 
 		return "editareProdus";
 	}
-
+	@RequestMapping(value={"/Cos"},method=RequestMethod.GET)
+	public String displayCart(Model model,@RequestParam(value = "page", defaultValue = "1") int page,//
+										  @RequestParam(value = "prodId", defaultValue = "0") int prodId){
+		final int maxResult = 4;
+		final int maxNavigationPage = 10;
+		PaginationResult<CosInfo> result=productDAO.queryCartProducts(prodId, page, maxResult, maxNavigationPage);
+		model.addAttribute("cartProducts", result);
+		return "cosCurent";
+	}
+	@RequestMapping(value={"/Delete"},method=RequestMethod.GET)
+	public String deleteFromCart(@RequestParam(value="idProd",defaultValue="0") int idProd){
+		if(idProd!=0)
+			productDAO.deleteCartProdId(idProd);
+		return "redirect:/Cos";
+	}
+	@RequestMapping(value={"/UpdateCart"},method=RequestMethod.GET)
+	public String updateCart(@RequestParam(value="idProd",defaultValue="0") int idProd,//
+							 @RequestParam(value="quantity",defaultValue="0") int quantity){
+		if(quantity>0)
+			productDAO.updateCart(idProd, quantity);
+		else
+			productDAO.deleteCartProdId(idProd);
+		return "redirect:/Cos";
+	}
 }
 
 

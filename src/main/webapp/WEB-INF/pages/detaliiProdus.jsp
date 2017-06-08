@@ -47,7 +47,9 @@
 				
 				<div id="butoane">
 					<security:authorize  access="hasAnyRole('BUYER')">
+						<a href="${pageContext.request.contextPath}/Cos?prodId=${product.id}">
 							<button> Adauga in cos </button>
+						</a>
 							<button> Adauga la favorite </button>
 					</security:authorize>
 				</div>
