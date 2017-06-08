@@ -20,11 +20,11 @@
            <th>Nume produs</th>
            <th>Pret</th>
        </tr>
-       <c:forEach items="${paginationFavorites.list}" var="favorites">
+       <c:forEach items="${favorites}" var="favorites">
            <tr>
-	           <td></td>
+	           <td>${favorites.name}</td>
 	           <td>
-	              <fmt:formatNumber value="${order.productId.getPrice()}" type="currency"/>
+	              ${favorites.price} lei
 	           </td>
            </tr>
        </c:forEach>

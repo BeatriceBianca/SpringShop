@@ -45,19 +45,20 @@ public class FavoritesController {
 		user = userDAO.findUserByEmail(currentUser.getUsername());
 		favoriteDAO.addFavorite(favoriteId, user.getId());
 		
-		ArrayList<FavoritesInfo> favorite = new ArrayList<FavoritesInfo>();
+		ArrayList<ProductInfo> favorite = new ArrayList<ProductInfo>();
 		
 		ArrayList<ProductInfo> listOfProducts = productDAO.getAllProducts();
 		ArrayList<FavoritesInfo> listOfFavorites = favoriteDAO.getFavoritesByUser(user.getId());
 		
-		System.out.println(listOfProducts.size() + "!!!!!!!!!!!!! " + listOfFavorites.size());
+		for( int i = 0; i < listOfFavorites.size(); i++ ){
+			for( int j = 0; j < listOfProducts.size(); j++ ) {
+				if ( listOfFavorites.get(i).getProductId() == listOfProducts.get(i).getId()) {
+					favorite.add(listOfProducts.get(i));
+				}
+			}
+		}
 		
-//		for( int i = 0; i < listOfFavorites.size(); i++ ){
-//			for( int j = 0; j < listOfProducts.size(); j++ ) {
-//				if ( listOfFavorites.get(i).)
-//			}
-//		}
-		
+		model.addAttribute("favorites", favorite);
 		productDAO.setCategoryType(5);
         return "favorite";
     }
