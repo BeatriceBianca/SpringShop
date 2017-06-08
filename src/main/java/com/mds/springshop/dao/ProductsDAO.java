@@ -25,6 +25,6 @@ public interface ProductsDAO {
     
     public ArrayList<ProductInfo> getAllProducts();
     
-    public void updateProduct(ProductInfo productInfo);
+    public void updateProduct(int id, ProductInfo productInfo);
  
 }

@@ -92,7 +92,7 @@ public class ProductsDAOImpl implements ProductsDAO {
     	String sql;
     	
     	sql = "Select new " + ProductInfo.class.getName() //
-                + "(p.name, p.productsLeftInStock, p.price, p.status, p.categoryId, p.id) " + " from "//
+                + "(p.name, p.productsLeftInStock, p.price, p.status, p.categoryId, p.id, p.description) " + " from "//
                 + Products.class.getName() + " p " 
                 + " where p.id = " + id;
     	
@@ -122,16 +122,36 @@ public class ProductsDAOImpl implements ProductsDAO {
     	return product;
     }
     
-    public void updateProduct(ProductInfo productInfo)
+    public void updateProduct(int id, ProductInfo productInfo)
 	 {
-		 int id=productInfo.getId();
-		 Products product=null;
+		 String sql = "update Products ";
+		 if (productInfo.getName() != "" ) {
+			 sql += "set product_name = '" + productInfo.getName() + "'";
+			 if (productInfo.getDescription() != "") {
+				 sql += ", description = '" + productInfo.getDescription() + "'";
+			 }
+			 if (productInfo.getPrice() != 0) {
+				 sql += ", price = " + productInfo.getPrice();
+			 }
+		 } else {
+			 if (productInfo.getDescription() != "") {
+				 sql += "set description = '" + productInfo.getDescription() + "'";
+				 if (productInfo.getPrice() != 0) {
+					 sql += ", price = " + productInfo.getPrice();
+				 }
+			 } else {
+				 if (productInfo.getPrice() != 0) {
+					 sql += "set price = " + productInfo.getPrice();
+				 }
+			 }
+		 }
+
 		 
-//		 product=this.findProductById(id);
-		
-		 product.setName(productInfo.getName());
-//		 product.setDescription(productInfo.getDescription);
-		 product.setPrice(productInfo.getPrice());
+	 	 sql += " where product_id = " + id;
+		 
+		 Session session = sessionFactory.getCurrentSession();
+		 Query query = session.createQuery(sql);
+	   	 query.executeUpdate();
 	 }
 
 }
