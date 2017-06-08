@@ -49,7 +49,7 @@
 	           </security:authorize>
 	           <security:authorize  access="hasAnyRole('BUYER')">
 		           <td>
-		           		<a href="./favorite">
+		           		<a href="./favorite/${products.id}">
 		           			<button>Adauga la favorite</button>
 		           		</a>
 		           </td>

@@ -25,13 +25,13 @@ import com.mds.springshop.validator.RegistrationValidator;
 
 @Controller
 public class UserController {
+	
 	@Autowired
 	private UsersDAO userDAO;
+	
 	@Autowired
 	private ProductsDAO productDAO;
 	
-	@Autowired
-	UsersDAO usersDAO;
 	@Autowired
 	private RegistrationValidator registrationValidator;
 	@InitBinder
@@ -50,7 +50,7 @@ public class UserController {
 	{
 		UsersInfo userInfo=null;
 		if(email!=null)
-			userInfo=usersDAO.findUserInfo(email);
+			userInfo=userDAO.findUserInfo(email);
 		if(userInfo==null)
 		{
 			userInfo=new UsersInfo();
@@ -89,7 +89,7 @@ public class UserController {
 		UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         
 		Users user;
-		user = usersDAO.findUserByEmail(userDetails.getUsername());
+		user = userDAO.findUserByEmail(userDetails.getUsername());
 		model.addAttribute("user", user);
 		
 		productDAO.setCategoryType(5);

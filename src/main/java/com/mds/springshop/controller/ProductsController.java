@@ -39,7 +39,6 @@ public class ProductsController {
       return "redirect:http://localhost:8080/SpringShop/detaliiProdus";
   }
 	
-	
 	@RequestMapping(value = { "/editareProdus/{id}" }, method = RequestMethod.GET)
 	@Transactional(propagation = Propagation.NEVER)
 	public String editProduct(@PathVariable int id, Model model)
@@ -61,9 +60,6 @@ public class ProductsController {
 		if (productInfo.getName() == null) {
 			model.addAttribute("product", productToUpdate);
 		} else {
-			System.out.println(productInfo.getName());
-			System.out.println(productInfo.getDescription());
-			System.out.println(productInfo.getPrice());
 			productDAO.updateProduct(productId, productInfo);
 			model.addAttribute("product", productDAO.getProductById(productId));
 		}

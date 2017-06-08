@@ -11,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.mds.springshop.model.ProductInfo;
+
 @Entity
 @Table(name = "PRODUCTS")
 public class Products implements Serializable {
@@ -24,6 +26,15 @@ public class Products implements Serializable {
 	private Users supplierId;
 	private int status;
 	private String description;
+	
+	public Products (ProductInfo product) {
+		this.name = product.getName();
+        this.productsLeftInStock = product.getProductsLeftInStock();
+        this.price = product.getPrice();
+        this.status = product.getStatus();
+        this.categoryId = product.getCategory();
+        this.id = product.getId();
+	}
 	
 	@Id
 	@Column(name = "product_id")

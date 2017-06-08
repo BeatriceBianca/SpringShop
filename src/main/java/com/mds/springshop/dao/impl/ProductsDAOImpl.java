@@ -1,5 +1,7 @@
 package com.mds.springshop.dao.impl;
 
+import java.util.ArrayList;
+
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -103,20 +105,19 @@ public class ProductsDAOImpl implements ProductsDAO {
     	return product;
     }
     
-    public Products findProductById(int id) {
-    	
+    public ArrayList<ProductInfo> getAllProducts() {
+
     	String sql;
-    	
-    	sql = "Select new " + ProductInfo.class.getName() //
-                + "(p.name, p.productsLeftInStock, p.price, p.status, p.categoryId, p.id) " + " from "//
-                + Products.class.getName() + " p " 
-                + " where p.id = " + id;
+    		sql = "Select new " + ProductInfo.class.getName() //
+                    + "(p.name, p.productsLeftInStock, p.price, p.status, p.categoryId, p.id) " + " from "//
+                    + Products.class.getName() + " p "
+                    + " where p.status = 1 ";
     	
     	Session session = sessionFactory.getCurrentSession();
-   	 
+    	 
     	Query query = session.createQuery(sql);
     	
-    	Products product = (Products) query.list().get(0);
+    	ArrayList<ProductInfo> product = (ArrayList<ProductInfo>) query.list();
     	
     	return product;
     }

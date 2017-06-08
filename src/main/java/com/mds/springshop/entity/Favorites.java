@@ -5,9 +5,9 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.mds.springshop.model.FavoritesInfo;
 
 @Entity
 @Table(name = "FAVORITES")
@@ -15,8 +15,17 @@ public class Favorites implements Serializable {
 	private static final long serialVersionUID = -2054386655979281967L;
 	
 	private int id;
-	private Products product;
-	private Users user;
+	private int productId;
+	private int userId;
+	
+	public Favorites () {
+		
+	}
+	
+	public Favorites(FavoritesInfo fav) {
+		this.productId = fav.getProductId();
+		this.userId = fav.getUserId();
+	}
 	
 	@Id
 	@Column(name = "favorite_id")
@@ -28,24 +37,23 @@ public class Favorites implements Serializable {
 		this.id = id;
 	}
 	
-	@ManyToOne
-    @JoinColumn(name = "product_id")
-	public Products getProduct() {
-		return product;
+	@Column(name = "product_id")
+	public int getProductId() {
+		return productId;
 	}
-	
-	public void setProduct(Products product) {
-		this.product = product;
+
+	public void setProductId(int productId) {
+		this.productId = productId;
 	}
-	
-	@ManyToOne
-	@JoinColumn(name = "user_id")
-	public Users getUser() {
-		return user;
+	@Column(name = "user_id")
+	public int getUserId() {
+		return userId;
 	}
-	
-	public void setUser(Users user) {
-		this.user = user;
+
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
+
+
 	
 }
