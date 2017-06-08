@@ -11,15 +11,20 @@ import javax.persistence.Table;
 @Table(name = "COS")
 public class Cos implements Serializable{
 	private static final long serialVersionUID = -2054386655979281968L;
-	
+	private int idCos;
 	private String userEmail;
 	private int idProd;
 	private String denumireProd;
 	private long pretProd;
-	private String descriereProd;
 	private int cantitate;
-	
-	
+	@Id
+	@Column(name = "idCos")
+	public int getIdCos() {
+		return idCos;
+	}
+	public void setIdCos(int idCos) {
+		this.idCos = idCos;
+	}
 	@Column(name = "userEmail")
 	public String getUserEmail() {
 		return userEmail;
@@ -34,7 +39,6 @@ public class Cos implements Serializable{
 	public void setIdProd(int idProd) {
 		this.idProd = idProd;
 	}
-	@Id
 	@Column(name = "denumireprod")
 	public String getDenumireProd() {
 		return denumireProd;
@@ -49,13 +53,7 @@ public class Cos implements Serializable{
 	public void setPretProd(long pretProd) {
 		this.pretProd = pretProd;
 	}
-	@Column(name = "descriereprod")
-	public String getDescriereProd() {
-		return descriereProd;
-	}
-	public void setDescriereProd(String descriereProd) {
-		this.descriereProd = descriereProd;
-	}
+	
 	@Column(name = "cantitate")
 	public int getCantitate() {
 		return cantitate;

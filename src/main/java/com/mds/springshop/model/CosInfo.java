@@ -1,23 +1,29 @@
 package com.mds.springshop.model;
 
 public class CosInfo {
+	private int idCos;
 	private String userEmail;
 	private int idProd;
 	private String denumireProd;
 	private long pretProd;
-	private String descriereProd;
 	private int cantitate;
 	
 	public CosInfo(){
 		
 	}
-	public CosInfo(String userEmail,int idProd,String denumireProd,long pretProd,String descriereProd,int cantitate){
+	public CosInfo(String userEmail,int idProd,String denumireProd,long pretProd,int idCos,int cantitate){
 		this.userEmail=userEmail;
 		this.idProd=idProd;
 		this.denumireProd=denumireProd;
 		this.pretProd=pretProd;
-		this.descriereProd=descriereProd;
 		this.cantitate=cantitate;
+		this.idCos=idCos;
+	}
+	public int getIdCos() {
+		return idCos;
+	}
+	public void setIdCos(int idCos) {
+		this.idCos = idCos;
 	}
 	public String getUserEmail() {
 		return userEmail;
@@ -43,12 +49,7 @@ public class CosInfo {
 	public void setPretProd(long pretProd) {
 		this.pretProd = pretProd;
 	}
-	public String getDescriereProd() {
-		return descriereProd;
-	}
-	public void setDescriereProd(String descriereProd) {
-		this.descriereProd = descriereProd;
-	}
+	
 	public int getCantitate() {
 		return cantitate;
 	}
