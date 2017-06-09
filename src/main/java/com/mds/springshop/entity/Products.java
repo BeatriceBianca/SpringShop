@@ -27,6 +27,10 @@ public class Products implements Serializable {
 	private int status;
 	private String description;
 	
+	public Products(){
+		
+	}
+	
 	public Products (ProductInfo product) {
 		this.name = product.getName();
         this.productsLeftInStock = product.getProductsLeftInStock();

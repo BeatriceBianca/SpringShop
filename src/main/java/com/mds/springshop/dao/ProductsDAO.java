@@ -27,4 +27,6 @@ public interface ProductsDAO {
     public void updateProduct(int id, ProductInfo productInfo);
     public void deleteCartProdId(int idProd);
     public void updateCart(int idProd,int cantitate);
+    public boolean testProductStock(int idProd,int stock);
+    public void cartFinalization();
 }

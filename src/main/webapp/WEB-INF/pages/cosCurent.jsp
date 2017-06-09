@@ -62,9 +62,15 @@
    </c:if>
    
    <div id="total">
+   		<div><c:if test="${not empty cartMessage}">
+				<c:out value="${cartMessage}"></c:out>
+		</c:if>
+		</div>
    		<div> Numar produse:${fn:length(cartProducts.list)}</div>
    		<div> Pret total: ${TotalValue } lei</div>
-   		<button> Comanda </button>
+   		<a href="${pageContext.request.contextPath}/CartFinalization">
+			<button> Comanda </button>
+		</a>
    </div>
    
 </body>

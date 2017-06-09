@@ -60,20 +60,55 @@ public class ProductsDAOImpl implements ProductsDAO {
         this.categoryType = categoryType;
     }
     
+    
+    public boolean testProductStock(int idProd,int stock){
+    	if(idProd!=0){
+    		ProductInfo productInfo=this.getProductById(idProd);
+    		if(productInfo.getProductsLeftInStock()-stock<0)
+    			return false;
+    	}
+    	return true;
+    }
+    
+    public void cartFinalization(){
+    	UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    	Session session=this.sessionFactory.getCurrentSession();
+    	Query query=session.createQuery("delete Cos where userEmail = :usernameParam");
+    	query.setParameter("usernameParam",userDetails.getUsername());
+    	query.executeUpdate();
+    	session.flush();
+    }
+    
     public void updateCart(int idProd,int cantitate){
     	UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     	Session session=this.sessionFactory.getCurrentSession();
-//    	ProductInfo product=this.getProductById(idProd);
-//    	Cos cartProducts=session.get(Cos.class,product.getName());
     	CosInfo cosInfo=this.findProductInCart(idProd, userDetails.getUsername());
     	Cos cartProducts=session.get(Cos.class,cosInfo.getIdCos());
     	cartProducts.setCantitate(cantitate);
     	session.update(cartProducts);
     	session.flush();
+    	Products pr;
+    	ProductInfo product=this.getProductById(idProd);
+		pr=session.get(Products.class,idProd);
+		if(cantitate>cosInfo.getCantitate())
+			pr.setProductsLeftInStock(product.getProductsLeftInStock()-cantitate+1);
+		else
+			pr.setProductsLeftInStock(product.getProductsLeftInStock()+cosInfo.getCantitate()-cantitate);
+		session.update(pr);
+		session.flush();
     }
+    
     public void deleteCartProdId(int idProd){
     	UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     	Session session=this.sessionFactory.getCurrentSession();
+    	CosInfo cosInfo=this.findProductInCart(idProd, userDetails.getUsername());
+    	Cos cartProduct=session.get(Cos.class,cosInfo.getIdCos());
+    	Products pr;
+    	pr=session.get(Products.class,idProd);
+		pr.setProductsLeftInStock(pr.getProductsLeftInStock()+cartProduct.getCantitate());
+		session.update(pr);
+		session.flush();
+		
     	Query query=session.createQuery("delete Cos where idProd=:idP and userEmail = :usernameParam");
     	query.setParameter("idP",idProd);
     	query.setParameter("usernameParam",userDetails.getUsername());
@@ -87,13 +122,19 @@ public class ProductsDAOImpl implements ProductsDAO {
     		product=this.getProductById(prodId);
     	UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     	Session session=this.sessionFactory.getCurrentSession();
-    	if(product!=null){
+    	if(product!=null&&this.testProductStock(prodId,1)){
     		Cos cartProducts;
+    		Products pr;
+    		pr=session.get(Products.class,prodId);
+    		pr.setProductsLeftInStock(product.getProductsLeftInStock()-1);
+    		session.update(pr);
+    		session.flush();
     		if(this.findProductInCart(prodId, userDetails.getUsername())!=null){
     			CosInfo cosInfo=this.findProductInCart(prodId, userDetails.getUsername());
     			cartProducts=session.get(Cos.class,cosInfo.getIdCos());
     			cartProducts.setCantitate(cartProducts.getCantitate()+1);
     			session.update(cartProducts);
+    			session.flush();
     		}
     		else{
 	    		cartProducts=new Cos();
@@ -103,7 +144,9 @@ public class ProductsDAOImpl implements ProductsDAO {
 	    		cartProducts.setCantitate(1);
 	    		cartProducts.setUserEmail(userDetails.getUsername());
 	    		session.save(cartProducts);
+	    		session.flush();
     		}
+    		
     	}
     	String sql="Select new " + CosInfo.class.getName() + "(p.userEmail,p.idProd,"
     			+ "p.denumireProd,p.pretProd,p.idCos,p.cantitate) " + " from " + Cos.class.getName() + " p "
@@ -113,8 +156,6 @@ public class ProductsDAOImpl implements ProductsDAO {
     	session.flush();
     	return new PaginationResult<CosInfo>(query, page, maxResult, maxNavigationPage);
     }
-    
-    
     
     public PaginationResult<ProductInfo> queryProducts(int page, int maxResult, int maxNavigationPage,//
     		int category,long minPrice,long maxPrice,int stock) {
@@ -146,6 +187,7 @@ public class ProductsDAOImpl implements ProductsDAO {
     	
     	return new PaginationResult<ProductInfo>(query, page, maxResult, maxNavigationPage);
     }
+    
     public CosInfo findProductInCart(int idProd,String userEmail){
     	String sql;
     	sql="Select new " + CosInfo.class.getName()+"(p.userEmail,p.idProd,"
@@ -160,6 +202,7 @@ public class ProductsDAOImpl implements ProductsDAO {
 			cosProduct=(CosInfo)query.list().get(0);
     	return cosProduct;
     }
+    
     public ProductInfo getProductById(int id) {
     	
     	String sql;
