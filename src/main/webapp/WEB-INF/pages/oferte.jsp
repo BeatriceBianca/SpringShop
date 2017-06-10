@@ -28,7 +28,7 @@
 	      	</tr>
 	</c:forEach>
    	</table>
-	<c:if test="${paginationProducts.totalPages > 1}">
+	<c:if test="${offerProducts.totalPages > 1}">
        <div class="page-navigator">
           <c:forEach items="${paginationProducts.navigationPages}" var = "page">
               <c:if test="${page != -1 }">
