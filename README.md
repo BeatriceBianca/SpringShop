@@ -12,22 +12,18 @@ Tema proiect:  magazin online
 Functionalitatile site-ului:
 
       -O baza de date pe un server Oracle cu urmatoarele tabele: utilizatori, produse,
-		          istoric comenzi, cos curent etc
+		          cos curent etc
               
       -Creare cont + logare:
           -cumparator: - modificarea informatiilor personale; 
-                       - accesare istoric comenzi; 
-                       - comentarii + rating produse; 
-                       - comenzi.
+	  	       - cos curent;
+		       - lista favorite.
           -furnizor: - modificarea informatiilor personale; 
                      - propunere de oferte.
           -administrator: - modificarea produselor ( pret, cantitate, descriere etc ); 
-                          - acceptarea ofertelor propuse de furnizori.
+                          - acceptarea ofertelor propuse de furnizori;
+			  - creare de cont pentru manager.
           
       -Cautare produse dupa anumite criterii
-     
-      -Cos curent
       
-      -Comandare produse ( +email catre cumparator si administrator ? )
-      
-      -Email pentru asistenta
+      -Comandare produse 
