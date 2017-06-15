@@ -9,6 +9,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<link href="styles/newAccount.css" type="text/css" rel="stylesheet">
 	<link href="styles/all.css" type="text/css" rel="stylesheet">
+	<link href="styles/index.css" type="text/css" rel="stylesheet">
 	<script src="js/criterii.js" type="text/javascript" ></script>
 	<script src="js/all.js" type="text/javascript" ></script>
 	<title>Spring Shop</title>

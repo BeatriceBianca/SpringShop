@@ -9,6 +9,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<link href="styles/newAccount.css" type="text/css" rel="stylesheet">
 	<link href="styles/all.css" type="text/css" rel="stylesheet">
+	<link href="styles/propunereOferte.css" type="text/css" rel="stylesheet">
 	<script src="js/criterii.js" type="text/javascript" ></script>
 	<script src="js/all.js" type="text/javascript" ></script>
 	<title>Spring Shop</title>
@@ -20,7 +21,7 @@
 	<jsp:include page="menu.jsp" />
 	
 	<form:form modelAttribute="ofertaForm" method="POST">
-	<div id = "">
+	<div id = "oferte-container">
 			<h1>Propune Oferta</h1>
 			<div>
 				<div>
