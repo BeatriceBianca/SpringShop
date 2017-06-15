@@ -3,6 +3,7 @@ package com.mds.springshop.dao;
 import java.util.ArrayList;
 
 import com.mds.springshop.entity.Products;
+import com.mds.springshop.entity.Users;
 import com.mds.springshop.model.CosInfo;
 import com.mds.springshop.model.PaginationResult;
 import com.mds.springshop.model.ProductInfo;
@@ -29,4 +30,8 @@ public interface ProductsDAO {
     public void updateCart(int idProd,int cantitate);
     public boolean testProductStock(int idProd,int stock);
     public void cartFinalization();
+    public void addProduct(ProductInfo productInfo,Users user);
+    public PaginationResult<ProductInfo> queryProductsFromOffers(int page, int maxResult, int maxNavigationPage);
+    public void acceptOffer(int idProd);
+    public void refuseOffer(int idProd);
 }

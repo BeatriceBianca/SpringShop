@@ -12,8 +12,10 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.mds.springshop.dao.ProductsDAO;
+import com.mds.springshop.dao.UsersDAO;
 import com.mds.springshop.entity.Cos;
 import com.mds.springshop.entity.Products;
+import com.mds.springshop.entity.Users;
 import com.mds.springshop.model.CosInfo;
 import com.mds.springshop.model.PaginationResult;
 import com.mds.springshop.model.ProductInfo;
@@ -59,8 +61,7 @@ public class ProductsDAOImpl implements ProductsDAO {
     public void setCategoryType(int categoryType) {
         this.categoryType = categoryType;
     }
-    
-    
+
     public boolean testProductStock(int idProd,int stock){
     	if(idProd!=0){
     		ProductInfo productInfo=this.getProductById(idProd);
@@ -76,6 +77,18 @@ public class ProductsDAOImpl implements ProductsDAO {
     	Query query=session.createQuery("delete Cos where userEmail = :usernameParam");
     	query.setParameter("usernameParam",userDetails.getUsername());
     	query.executeUpdate();
+    }
+    public void addProduct(ProductInfo productInfo,Users user){
+    	Products product=new Products();
+    	product.setName(productInfo.getName());
+    	product.setDescription(productInfo.getDescription());
+    	product.setPrice(productInfo.getPrice());
+    	product.setProductsLeftInStock(productInfo.getProductsLeftInStock());
+    	product.setCategoryId(productInfo.getCategory());
+    	product.setStatus(0);
+    	product.setSupplierId(user);
+    	Session session=this.sessionFactory.getCurrentSession();
+    	session.save(product);
     	session.flush();
     }
     
@@ -156,6 +169,16 @@ public class ProductsDAOImpl implements ProductsDAO {
     	session.flush();
     	return new PaginationResult<CosInfo>(query, page, maxResult, maxNavigationPage);
     }
+
+    public PaginationResult<ProductInfo> queryProductsFromOffers(int page, int maxResult, int maxNavigationPage){
+    	String SQL = "Select new " + ProductInfo.class.getName() //
+                + "(p.name, p.productsLeftInStock, p.price, p.status, p.categoryId, p.id) " + " from "//
+                + Products.class.getName() + " p "
+                + " where p.status = 0 ";
+    	Session session = sessionFactory.getCurrentSession();
+    	Query query = session.createQuery(SQL);
+    	return new PaginationResult<ProductInfo>(query, page, maxResult, maxNavigationPage);
+    }
     
     public PaginationResult<ProductInfo> queryProducts(int page, int maxResult, int maxNavigationPage,//
     		int category,long minPrice,long maxPrice,int stock) {
@@ -202,7 +225,21 @@ public class ProductsDAOImpl implements ProductsDAO {
 			cosProduct=(CosInfo)query.list().get(0);
     	return cosProduct;
     }
-    
+
+    public void acceptOffer(int idProd){
+    	Session session = sessionFactory.getCurrentSession();
+    	Products product=(Products)session.get(Products.class,idProd);
+    	product.setStatus(1);
+    	session.update(product);
+    	session.flush();
+    }
+    public void refuseOffer(int idProd){
+    	Session session = sessionFactory.getCurrentSession();
+    	Products product=(Products)session.get(Products.class,idProd);
+    	session.delete(product);
+    	session.flush();
+    }
+
     public ProductInfo getProductById(int id) {
     	
     	String sql;
