@@ -10,8 +10,6 @@
 	<link href="styles/newAccount.css" type="text/css" rel="stylesheet">
 	<link href="styles/all.css" type="text/css" rel="stylesheet">
 	<link href="styles/index.css" type="text/css" rel="stylesheet">
-	<script src="js/criterii.js" type="text/javascript" ></script>
-	<script src="js/all.js" type="text/javascript" ></script>
 	<title>Spring Shop</title>
 </head>
 <body class="">
@@ -31,7 +29,7 @@
    	</table>
 	<c:if test="${offerProducts.totalPages > 1}">
        <div class="page-navigator">
-          <c:forEach items="${paginationProducts.navigationPages}" var = "page">
+          <c:forEach items="${offerProducts.navigationPages}" var = "page">
               <c:if test="${page != -1 }">
                 <a href="oferte?page=${page}" class="nav-item">${page}</a>
               </c:if>

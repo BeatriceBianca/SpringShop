@@ -6,7 +6,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<link href="styles/favorite.css" type="text/css" rel="stylesheet">
 	<link href="styles/all.css" type="text/css" rel="stylesheet">
-	<script src="js/criterii.js" type="text/javascript" ></script>
+	<link href="styles/index.css" type="text/css" rel="stylesheet">
 	<title>Spring Shop</title>
 </head>
 <body class="favorite-page">
@@ -19,6 +19,7 @@
        <tr>
            <th>Nume produs</th>
            <th>Pret</th>
+           <th></th>
        </tr>
        <c:forEach items="${favorites}" var="favorites">
            <tr>
@@ -26,6 +27,9 @@
 	           <td>
 	              ${favorites.price} lei
 	           </td>
+	           <td>
+	        	  <a href="${pageContext.request.contextPath}/deleteFav?idProd=${favorites.id}">Sterge</a>
+	       	   </td>
            </tr>
        </c:forEach>
    </table>

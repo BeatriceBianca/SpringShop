@@ -80,7 +80,7 @@ public class ProductsController {
 	public String displayCart(Model model,@RequestParam(value = "page", defaultValue = "1") int page,//
 										  @RequestParam(value = "prodId", defaultValue = "0") int prodId,
 										  @RequestParam(value="cartMessage", defaultValue="empty") String cartMessage){
-		final int maxResult = 4;
+		final int maxResult = 2;
 		final int maxNavigationPage = 10;
 		if(!cartMessage.equals("empty"))
 			model.addAttribute("cartMessage",cartMessage);

@@ -5,8 +5,9 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<link href="styles/cosCurent.css" type="text/css" rel="stylesheet">
 	<link href="styles/all.css" type="text/css" rel="stylesheet">
+	<link href="styles/index.css" type="text/css" rel="stylesheet">
+	<link href="styles/cosCurent.css" type="text/css" rel="stylesheet">
 	<title>Spring Shop</title>
 </head>
 <body class="cosCurent-page">
@@ -20,6 +21,8 @@
            <th>Nume produs</th>
            <th>Pret</th>
            <th>Cantitate</th>
+           <th></th>
+           <th></th>
        </tr>
        <c:forEach items="${cartProducts.list}" var="products">
        		<c:choose>
@@ -34,16 +37,14 @@
 	        <td>${products.denumireProd}</td>
 	        <td>${products.pretProd}</td>
 	        <td>${products.cantitate}</td>
-	        <td>
-		      	<form action="UpdateCart" method="get">
-					<br>Cantitate: <input type="number" name="quantity">
-					<input type="hidden" name="idProd" value="${products.idProd}">
-					<br><input type="submit" value="Actualizeaza">
-				</form>
-		      </td>
+		    <td><form action="UpdateCart" method="get">
+				<br>Cantitate: <input type="number" name="quantity">
+				<input type="hidden" name="idProd" value="${products.idProd}">
+				<br><input type="submit" value="Actualizeaza">
+			</form></td>
 	        <td>
 	        	<a href="${pageContext.request.contextPath}/Delete?idProd=${products.idProd}">Sterge</a>
-	        <td>
+	        </td>
 	   </tr>
        </c:forEach>
    </table>
