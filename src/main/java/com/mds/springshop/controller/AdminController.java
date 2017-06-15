@@ -1,27 +1,24 @@
 package com.mds.springshop.controller;
- 
-import java.util.List;
- 
-import com.mds.springshop.model.PaginationResult;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.ResourceBundleMessageSource;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.support.ByteArrayMultipartFileEditor;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import com.mds.springshop.dao.ProductsDAO;
+import com.mds.springshop.dao.TestsDAO;
+import com.mds.springshop.model.PaginationResult;
+import com.mds.springshop.model.ProductInfo;
  
 @Controller
 // Enable Hibernate Transaction.
@@ -33,6 +30,12 @@ public class AdminController {
     // Configurated In ApplicationContextConfig.
     @Autowired
     private ResourceBundleMessageSource messageSource;
+    
+    @Autowired
+	private ProductsDAO productDAO;
+    
+    @Autowired
+    private TestsDAO testsDao;
  
     @InitBinder
     public void myInitBinder(WebDataBinder dataBinder) {
@@ -43,23 +46,46 @@ public class AdminController {
         System.out.println("Target=" + target);
 
     }
- 
-    // GET: Show Login Page
+    
     @RequestMapping(value = { "/login" }, method = RequestMethod.GET)
-    public String login(Model model) {
+    public String getLoginPage(Model model) {
  
-        return "login";
+    	productDAO.setCategoryType(5);
+    	return "login";
     }
- 
-    @RequestMapping(value = { "/accountInfo" }, method = RequestMethod.GET)
-    public String accountInfo(Model model) {
- 
-        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        System.out.println(userDetails.getPassword());
-        System.out.println(userDetails.getUsername());
-        System.out.println(userDetails.isEnabled());
- 
-        model.addAttribute("userDetails", userDetails);
-        return "accountInfo";
-    }
+	
+	@RequestMapping({ "/" })
+	public String firstPage() {
+
+	  testsDao.testAll();
+	  productDAO.setCategoryType(5);
+      return "redirect:/index";
+	}
+	
+	@RequestMapping(value = { "/index" }, method = RequestMethod.POST)
+	public String critForm(Model model,@ModelAttribute("categoryForm")  ProductInfo productInfo,BindingResult result,final RedirectAttributes redirectAttributes)
+	{
+		productDAO.setCategoryType(productInfo.getCategory());
+		productDAO.setPriceMin(productInfo.getMinPrice());
+		productDAO.setPriceMax(productInfo.getMaxPrice());
+		productDAO.setStock(productInfo.getProductsLeftInStock());
+		return "redirect:/index";
+	}
+
+	@RequestMapping(value={ "/index" },method=RequestMethod.GET)
+	public String listProductHandler(Model model,
+          @RequestParam(value = "page", defaultValue = "1") int page) {
+
+	  final int maxResult = 4;
+	  final int maxNavigationPage = 10;
+
+	  PaginationResult<ProductInfo> result = productDAO.queryProducts(page,maxResult, maxNavigationPage,//
+			  productDAO.getCategoryType(),productDAO.getPriceMin(),productDAO.getPriceMax(),productDAO.getStock());
+      model.addAttribute("paginationProducts", result);
+      model.addAttribute("categoryType", productDAO.getCategoryType());
+      ProductInfo productInfo=new ProductInfo();
+      model.addAttribute("categoryForm",productInfo);
+      return "index";
+  }
+
 }

@@ -1,0 +1,26 @@
+#login-container {
+	margin-left: 20%;
+	margin-top: 10.5%;
+	margin-right: 20%;
+	padding-left: 5%;
+	padding-bottom: 5%;
+}
+
+table {
+	width: 50%;
+}
+h1 {
+	margin-left: 25%;
+}
+
+#email, #pass {
+	width: 100px;
+	height: 20px;
+}
+
+#login, #reset {
+	margin-top: 20px;
+	width: 45%;
+	border-radius: 4px;
+	padding: 5px;
+}

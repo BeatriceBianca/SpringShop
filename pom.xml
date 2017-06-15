@@ -180,7 +180,7 @@
  
  
     <build>
-        <finalName>SpringMVCAnnotationShoppingCart</finalName>
+        <finalName>SpringShop</finalName>
         <plugins>
  
             <!-- Config: Maven Tomcat Plugin -->
@@ -189,7 +189,7 @@
                 <groupId>org.apache.tomcat.maven</groupId>
                 <artifactId>tomcat7-maven-plugin</artifactId>
                 <version>2.2</version>
-                <!-- Config: contextPath and Port (Default - /SpringMVCAnnotationShoppingCart
+                <!-- Config: contextPath and Port (Default - /SpringShop
                     : 8080) -->
                 <!-- <configuration> <path>/</path> <port>8899</port> </configuration> -->
             </plugin>

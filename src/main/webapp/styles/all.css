@@ -1,0 +1,126 @@
+html {
+	width: 100%;
+	background: url("../images/background.jpg");
+	background-repeat: no-repeat;
+	font-family: 'Oswald', sans-serif;
+}
+
+body {
+	width: 70%;
+	height: 700px;
+	display: block;
+	margin: 50px auto auto auto;
+	border: 2px solid black;
+	background: linear-gradient(to bottom right, rgba(173,216,230,0.9), rgba(70,130,180,0.9));
+}
+
+#logo {
+    height: 70px;
+    display: inline-block;
+    padding: 20px;
+    float: left;
+}
+
+.navbar {
+    height: 100px;
+    width: 100%;
+    background-color: rgba(70,130,180,0.8);
+}
+
+.navbar-list {
+    padding-left: 50%;
+    margin-top: 30px;
+}
+
+.navbar-item1 {
+    display: table-cell;
+    vertical-align: bottom;
+    text-align: center;
+    padding-left: 70px;
+}
+
+.navbar-item {
+    display: table-cell;
+    vertical-align: bottom;
+    text-align: center;
+    padding-top: 10px;
+}
+
+.navbar-item a, .navbar-item1 a {
+	text-decoration: none;
+	padding-right: 50px;
+	font-size: 19px;
+	color: black;
+}
+
+.container-12 {
+    margin-left: auto;
+    margin-right: auto;
+    width:  100%;
+    float: right;
+}
+
+#top-div {
+	width: 70%;
+	height: auto;
+	display: inline-block;
+	float: right;
+	margin: auto 50px auto auto;
+	border: 2px solid black;
+	background-color: rgba(0,0,128,0.8);
+}
+
+.item {
+    display: table-cell;
+    vertical-align: bottom;
+    text-align: center;
+    padding: 10px 10px 10px 30px;
+    transition: all 1s;
+	-webkit-transition: all 1s;
+	-moz-transition: all 1s;
+	-o-transition: all 1s;
+}
+
+.item:hover {
+	background-color: #191970;
+}
+
+.item a {
+	text-decoration: none;
+	padding-right: 80px;
+	font-size: 19px;
+	color: white;
+}
+
+#left-div {
+	width: 20%;
+	border: 2px solid black;
+	margin-top: 10%;
+	margin-left: 3%;
+	padding: 10px;
+	font-size: 17px;
+	background-color: rgba(176,196,222,0.7);
+	float: left;
+}
+
+#criterii {
+	display: block;
+	margin: auto;
+	width: 30%;
+	height: 25px;
+}
+
+#pret {
+	width: 100%;
+}
+
+#pret-min, #pret-max {
+	width: 30%;
+	border-radius: 4px;
+}
+
+#categorie {
+	border-radius: 4px;
+	width: 50%;
+	height: 25px;
+}

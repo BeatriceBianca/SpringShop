@@ -1,9 +1,8 @@
 package com.mds.springshop.config;
  
 import java.util.Properties;
- 
 import javax.sql.DataSource;
- 
+
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -18,6 +17,9 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
+
+import com.mds.springshop.dao.UsersDAO;
+import com.mds.springshop.dao.impl.UsersDAOImpl;
  
 @Configuration
 @ComponentScan("com.mds.springshop.*")
@@ -103,5 +105,15 @@ public class ApplicationContextConfig {
         HibernateTransactionManager transactionManager = new HibernateTransactionManager(sessionFactory);
  
         return transactionManager;
+    }
+    
+    @Bean(name = "UsersDAO")
+    public UsersDAO getApplicantDAO() {
+        return new UsersDAOImpl();
+    }
+    
+    @Bean(name = "UsersDAO")
+    public UsersDAO getUsersDAO()  {
+        return new UsersDAOImpl();
     }
 }
