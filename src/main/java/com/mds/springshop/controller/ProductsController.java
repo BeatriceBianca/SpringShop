@@ -76,6 +76,7 @@ public class ProductsController {
 
 		return "editareProdus";
 	}
+	
 	@RequestMapping(value={"/Cos"},method=RequestMethod.GET)
 	public String displayCart(Model model,@RequestParam(value = "page", defaultValue = "1") int page,//
 										  @RequestParam(value = "prodId", defaultValue = "0") int prodId,
@@ -91,12 +92,14 @@ public class ProductsController {
 		model.addAttribute("cartProducts", result);
 		return "cosCurent";
 	}
+	
 	@RequestMapping(value={"/Delete"},method=RequestMethod.GET)
 	public String deleteFromCart(@RequestParam(value="idProd",defaultValue="0") int idProd){
 		if(idProd!=0)
 			productDAO.deleteCartProdId(idProd);
 		return "redirect:/Cos";
 	}
+	
 	@RequestMapping(value={"/UpdateCart"},method=RequestMethod.GET)
 	public String updateCart(Model model,@RequestParam(value="idProd",defaultValue="0") int prodId,//
 							 @RequestParam(value="quantity",defaultValue="0") int quantity){
@@ -110,17 +113,20 @@ public class ProductsController {
 		}
 		return "redirect:/Cos";
 	}
+	
 	@RequestMapping(value={"/CartFinalization"},method=RequestMethod.GET)
 	public String cartFin(){
 		productDAO.cartFinalization();
 		return "redirect:/Cos";
 	}
+	
 	@RequestMapping(value = { "/propunereOferta" }, method = RequestMethod.GET)
 	public String getPOfferPage(Model model){
 		ProductInfo productInfo=new ProductInfo();
 		model.addAttribute("ofertaForm",productInfo);
 		return "propunereOferta";
 	}
+	
 	@RequestMapping(value = { "/propunereOferta" }, method = RequestMethod.POST)
 	@Transactional(propagation = Propagation.NEVER)
 	public String postPOfferPage(Model model,@ModelAttribute("ofertaForm") ProductInfo productInfo,BindingResult result,final RedirectAttributes redirectAttributes){
@@ -137,6 +143,7 @@ public class ProductsController {
 		}
 		return "redirect:/";
 	}
+	
 	@RequestMapping(value={"/oferte"},method=RequestMethod.GET)
 	public String oferte(Model model,@RequestParam(value = "page", defaultValue = "1") int page,
 									 @RequestParam(value = "prodIdRemove", defaultValue = "0") int prodIdRemove,

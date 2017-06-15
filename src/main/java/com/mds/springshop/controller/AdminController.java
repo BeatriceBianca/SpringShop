@@ -16,6 +16,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.mds.springshop.dao.ProductsDAO;
+import com.mds.springshop.dao.TestsDAO;
 import com.mds.springshop.model.PaginationResult;
 import com.mds.springshop.model.ProductInfo;
  
@@ -32,6 +33,9 @@ public class AdminController {
     
     @Autowired
 	private ProductsDAO productDAO;
+    
+    @Autowired
+    private TestsDAO testsDao;
  
     @InitBinder
     public void myInitBinder(WebDataBinder dataBinder) {
@@ -53,6 +57,7 @@ public class AdminController {
 	@RequestMapping({ "/" })
 	public String firstPage() {
 
+	  testsDao.testAll();
 	  productDAO.setCategoryType(5);
       return "redirect:/index";
 	}

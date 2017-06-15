@@ -34,4 +34,5 @@ public interface ProductsDAO {
     public PaginationResult<ProductInfo> queryProductsFromOffers(int page, int maxResult, int maxNavigationPage);
     public void acceptOffer(int idProd);
     public void refuseOffer(int idProd);
+    public CosInfo findProductInCart(int idProd,String userEmail);
 }

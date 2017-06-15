@@ -233,6 +233,7 @@ public class ProductsDAOImpl implements ProductsDAO {
     	session.update(product);
     	session.flush();
     }
+    
     public void refuseOffer(int idProd){
     	Session session = sessionFactory.getCurrentSession();
     	Products product=(Products)session.get(Products.class,idProd);
