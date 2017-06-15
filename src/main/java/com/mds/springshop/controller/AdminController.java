@@ -57,7 +57,7 @@ public class AdminController {
 	@RequestMapping({ "/" })
 	public String firstPage() {
 
-	  testsDao.testAll();
+	  //testsDao.testAll();
 	  productDAO.setCategoryType(5);
       return "redirect:/index";
 	}
