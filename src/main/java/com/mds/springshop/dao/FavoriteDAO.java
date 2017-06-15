@@ -7,7 +7,6 @@ import com.mds.springshop.model.FavoritesInfo;
 public interface FavoriteDAO {
 	
 	public void addFavorite(int favoriteId, int userId);
-	
 	public ArrayList<FavoritesInfo> getFavoritesByUser(int userId);
-	
+	public void deleteFavProdId(int idProd);
 }

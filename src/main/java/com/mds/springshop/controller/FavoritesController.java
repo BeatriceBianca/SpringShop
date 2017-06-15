@@ -70,4 +70,11 @@ public class FavoritesController {
       return "redirect:http://localhost:8080/SpringShop/favorite";
   }
 	
+	@RequestMapping(value={"/deleteFav"},method=RequestMethod.GET)
+	public String deleteFromFav(@RequestParam(value="idProd",defaultValue="0") int idProd){
+		if(idProd!=0)
+			favoriteDAO.deleteFavProdId(idProd);
+		return "redirect:/favorite";
+	}
+	
 }
