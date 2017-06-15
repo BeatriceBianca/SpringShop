@@ -28,6 +28,8 @@ public interface ProductsDAO {
     public void updateProduct(int id, ProductInfo productInfo);
     public void deleteCartProdId(int idProd);
     public void updateCart(int idProd,int cantitate);
+    public boolean testProductStock(int idProd,int stock);
+    public void cartFinalization();
     public void addProduct(ProductInfo productInfo,Users user);
     public PaginationResult<ProductInfo> queryProductsFromOffers(int page, int maxResult, int maxNavigationPage);
     public void acceptOffer(int idProd);

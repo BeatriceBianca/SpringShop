@@ -78,9 +78,15 @@ public class ProductsController {
 	}
 	@RequestMapping(value={"/Cos"},method=RequestMethod.GET)
 	public String displayCart(Model model,@RequestParam(value = "page", defaultValue = "1") int page,//
-										  @RequestParam(value = "prodId", defaultValue = "0") int prodId){
+										  @RequestParam(value = "prodId", defaultValue = "0") int prodId,
+										  @RequestParam(value="cartMessage", defaultValue="empty") String cartMessage){
 		final int maxResult = 4;
 		final int maxNavigationPage = 10;
+		if(!cartMessage.equals("empty"))
+			model.addAttribute("cartMessage",cartMessage);
+		else
+			if(!productDAO.testProductStock(prodId,1))
+				model.addAttribute("cartMessage","Stoc epuizat");
 		PaginationResult<CosInfo> result=productDAO.queryCartProducts(prodId, page, maxResult, maxNavigationPage);
 		model.addAttribute("cartProducts", result);
 		return "cosCurent";
@@ -92,12 +98,21 @@ public class ProductsController {
 		return "redirect:/Cos";
 	}
 	@RequestMapping(value={"/UpdateCart"},method=RequestMethod.GET)
-	public String updateCart(@RequestParam(value="idProd",defaultValue="0") int idProd,//
+	public String updateCart(Model model,@RequestParam(value="idProd",defaultValue="0") int prodId,//
 							 @RequestParam(value="quantity",defaultValue="0") int quantity){
-		if(quantity>0)
-			productDAO.updateCart(idProd, quantity);
-		else
-			productDAO.deleteCartProdId(idProd);
+		if(quantity<0)
+			productDAO.deleteCartProdId(prodId);
+		else{
+			if(!productDAO.testProductStock(prodId,quantity))
+				model.addAttribute("cartMessage","Stoc epuizat");
+			else
+				productDAO.updateCart(prodId,quantity);
+		}
+		return "redirect:/Cos";
+	}
+	@RequestMapping(value={"/CartFinalization"},method=RequestMethod.GET)
+	public String cartFin(){
+		productDAO.cartFinalization();
 		return "redirect:/Cos";
 	}
 	@RequestMapping(value = { "/propunereOferta" }, method = RequestMethod.GET)
